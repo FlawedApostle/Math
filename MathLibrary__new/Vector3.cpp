@@ -14,7 +14,7 @@ Vector3::~Vector3()
 void Vector3::print(std::string note)
 {
 	std::cout << note;
-	printf("(%f,%f,%f)\n", x, y, z);
+	printf("(%f,%f,%f) (w = %f)\n", x, y, z, w);
 }
 void Vector3::print()
 {
@@ -23,7 +23,7 @@ void Vector3::print()
 
 Vector3& Vector3::getVector3()
 {
-	Vector3 ijk(getVector3x(), getVector3y(), getVector3z());
+	Vector3 ijk(getVector3x(), getVector3y(), getVector3z() , getVector3w());
 	return ijk;
 }
 float Vector3::setVector3x(float set)
@@ -41,6 +41,11 @@ float Vector3::setVector3z(float set)
 	z = set;
 	return z;
 }
+float Vector3::setVector3w(float set)
+{
+	w = set;
+	return w;
+}
 
 float Vector3::getVector3x()
 {
@@ -53,6 +58,11 @@ float Vector3::getVector3y()
 float Vector3::getVector3z()
 {
 	return z;
+}
+// Depth Of Field Coord
+float Vector3::getVector3w()
+{
+	return w;
 }
 
 Vector3& Vector3::operator=(const Vector3& v)
@@ -89,8 +99,13 @@ Vector3& Vector3::operator*(const float scalar)
 
 }
 
-
-
+// Perpendicular Cross Product 2D
+/*
+	*I want to add a 2D cross product, 
+	*to divide a 3D Vector by w (depth value) will yeild a 2D vector
+	*That 2D vector I then want to use for a 2D cross product function
+	*					a X b = (ax)(by) - (ay)(bx)
+*/
 
 Vector3& Vector3::normalize(Vector3& a)
 {

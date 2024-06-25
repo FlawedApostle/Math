@@ -10,7 +10,12 @@ void Quaternion::print(std::string note)
 {
 	 std::cout << note;
 	printf("(w = %f) , [%f,%f,%f]\n" , w, x, y, z);
-	printf("Vector3 = (%f,%f,%f)\n", vector3Quat.getVector3x(), vector3Quat.getVector3y(), vector3Quat.getVector3z());
+}
+void Quaternion::printVector3(std::string note)
+{
+	 std::cout << note;
+	 printf(" Vector3 = (%f,%f,%f) (w=%f)\n", vector3Quat.getVector3x(), vector3Quat.getVector3y(), vector3Quat.getVector3z() , vector3Quat.getVector3w());
+
 }
 
 Quaternion Quaternion::operator+(Quaternion Quat1)
@@ -23,7 +28,14 @@ Quaternion Quaternion::operator+(Quaternion Quat1)
 	x = x + Quat1.x;
 	y = y + Quat1.y;
 	z = z + Quat1.z;
-	Quaternion ijkz(w, x, y, z);
+
+	/// Adding the xyz components of Vector3 class, created in Quat constructor
+	//vector3Quat.setVector3x(x);
+	//vector3Quat.setVector3y(y);
+	//vector3Quat.setVector3z(z);
+	//vector3Quat.setVector3w(w);
+
+	Quaternion ijkz(x, y, z , w);
 	return ijkz;
 	//);
 }
@@ -48,9 +60,9 @@ Quaternion Quaternion::operator*(Quaternion otherQuat)
 	
 	/// w1*w2 - v1 . v2 + w1v2 + w2v1 + v1 X v2
 	// -v1 . v2 + v1 X v2
-	float w1 = w;														printf("w = %f\n", w1);
-	float w2 = otherQuat.w;												printf("w = %f\n", w2);
-	Vector3 v1 = (vector3Quat.getVector3());							v1.print("Vector3 getVector3 = ");
+	float w1 = w;														printf("[function Quat operator*]w = %f\n", w1);
+	float w2 = otherQuat.w;												printf("[function Quat operator*]w = %f\n", w2);
+	Vector3 v1 = (vector3Quat.getVector3());							v1.print("[function Quat operator*] Vector3 getVector3 = ");
 
 
 	Quaternion ijkz;

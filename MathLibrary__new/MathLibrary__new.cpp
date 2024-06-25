@@ -357,11 +357,22 @@ int main()
 	//std::cout << std::endl;
 
 
-	Quaternion times1(1, 2, 2, 3);
-	Quaternion times2(2, 1, 2, 5);
-	times1.getQuaternionVector3();
-	times1.print("Times1 = ");
-	times2.print("Times2 = ");
+	//Quaternion times1(1, 2, 2, 3);
+	//Quaternion times2(2, 1, 2, 5);
+	Vector3 v4DQuat1(2, 1, 2, 5);
+	Vector3 v4DQuat2(2, 1, 2, 5);
+	v4DQuat1.print("v4DQuat1 = ");
+	v4DQuat2.print("v4DQuat2 = ");
+	v4DQuat1.operator+(v4DQuat2);
+	v4DQuat1.print("v4DQuat ADD = ");
+
+	//times1.getQuaternionVector3();
+	//times1.print("Times1 = ");
+	//times2.print("Times2 = ");
+	//times1.operator+(times2);
+	//times1.operator*(times2);
+	//times1.print("Times one multipled");
+	//times1.printVector3("Times one multipled ");
 
 	
 

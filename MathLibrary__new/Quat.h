@@ -46,13 +46,13 @@ protected:
 		w = w_;
 	}
 
+	// Set Vector3 class xyzw
 	void setQuatVector3(float x_, float y_, float z_, float w_)
 	{
 		vector3Quat.setVector3x(x);
 		vector3Quat.setVector3y(y);
 		vector3Quat.setVector3z(z);
-		w = w_;
-		
+		vector3Quat.setVector3w(w);	
 	}
 
 public:
@@ -74,6 +74,8 @@ public:
 	~Quaternion();
 	void print();
 	void print(std::string note);
+	void printVector3(std::string note);
+
 	// get private setter
 	Quaternion getQuaternion()
 	{
@@ -94,6 +96,7 @@ public:
 		return vector3Quat.getVector3();
 		 /*std::cout << vector3Quat.getVector3();*/
 	}
+	
 	// overload the * operator to multiply two quaternions
 	Quaternion operator + (Quaternion Quat1);
 	Quaternion operator * (Quaternion Quat1);

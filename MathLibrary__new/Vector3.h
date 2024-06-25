@@ -7,27 +7,49 @@ class Vector3
 private:
 protected:
 	float x, y, z;
+	float w;
 	void setVector3(float x_, float y_, float z_)
 	{
 		x = x_;
 		y = y_;
 		z = z_;
 	}
+	// Setting w value
+	void setVector3(float x_, float y_, float z_ ,float w_)
+	{
+		x = x_;
+		y = y_;
+		z = z_;
+		w = w_;
+	}
 
 public:
 
 	Vector3()
 	{
-		//Vector3 vec(x, y, z);
 		setVector3(1,1,1);
 	}
+
 	Vector3(float x, float y, float z)
 	{
 		setVector3(x, y, z);
 	}
+
+	// Vec3 take a w coord, for D.O.F (Depth Of Field)
+	Vector3(float x, float y, float z, float w)
+	{
+		setVector3(x, y, z , w);
+		//setVector3w(w);
+	}
+
 	Vector3(Vector3& a)
 	{
 		setVector3(a.x, a.y, a.z);
+		// if user has inputed a w value for depth
+		if (w != NULL)
+		{
+			w = a.w;
+		}
 	}
 	~Vector3();
 	void print(std::string note);
@@ -37,9 +59,11 @@ public:
 	float setVector3x(float set);
 	float setVector3y(float set);
 	float setVector3z(float set);
+	float setVector3w(float set);
 	float getVector3x();
 	float getVector3y();
 	float getVector3z();
+	float getVector3w();
 
 
 	Vector3& operator = (const Vector3& v);
