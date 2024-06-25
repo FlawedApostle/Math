@@ -11,10 +11,16 @@ Vector3::~Vector3()
 {
 }
 
+void Vector3::printW(std::string note)
+{
+	std::cout << note;
+	//printf("(%f,%f,%f) (w = %f)\n", x, y, z, w);
+}
 void Vector3::print(std::string note)
 {
 	std::cout << note;
-	printf("(%f,%f,%f) (w = %f)\n", x, y, z, w);
+	//printf("(%f,%f,%f) (w = %f)\n", x, y, z, w);
+	printf("(%f,%f,%f)\n", x, y, z);
 }
 void Vector3::print()
 {
@@ -127,12 +133,14 @@ Vector3& Vector3::crossProduct(Vector3& a, Vector3& b)
 	//			(ax*bz)-(az*bx)j
 	//			(ax*by)-(ay*bx)k
 
-	float i = (a.y * b.z) - (a.z * b.y);
-	float j = (a.x*b.z) - (a.z*b.x);
-	float k = (a.x * b.y) - (a.y * b.x);
-
-	Vector3 ijk(x=i, y=j, z=k);
-	ijk.print("ijk = ");		
+	float i = (a.y*b.z)-(a.z*b.y);
+	float j = (a.x*b.z)-(a.z*b.x);
+	float k = (a.x*b.y)-(a.y*b.x);
+	x = i;
+	y = j;
+	z = k;
+	
+	Vector3 ijk(setVector3x(x) , setVector3y(y), setVector3z(z));
 	return ijk;
 }
 

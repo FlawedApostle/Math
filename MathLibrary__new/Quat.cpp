@@ -59,11 +59,39 @@ Quaternion Quaternion::operator*(Quaternion otherQuat)
 	//v1.CrossProduct_3(v1, v2);				
 	
 	/// w1*w2 - v1 . v2 + w1v2 + w2v1 + v1 X v2
-	// -v1 . v2 + v1 X v2
+	// aw*bw a . b + aw*b + bw*a + a X b
+	
+	// Data
 	float w1 = w;														printf("[function Quat operator*]w = %f\n", w1);
 	float w2 = otherQuat.w;												printf("[function Quat operator*]w = %f\n", w2);
-	Vector3 v1 = (vector3Quat.getVector3());							v1.print("[function Quat operator*] Vector3 getVector3 = ");
+	Vector3 v1 = (vector3Quat.getVector3());							v1.print("[function Quat operator* , Vector3::GetVector3()] v1 = ");
+	Vector3 v2(otherQuat.x, otherQuat.y, otherQuat.z, otherQuat.w);	    v2.print("[function Quat operator* , Vector3::GetVector3()] v2 = ");
+	Quaternion q1(x , y , z , w);										q1.print("[function Quat operator* , v1 Quaternion = ");
+	Quaternion q2(otherQuat);											q2.print("[function Quat operator* , v2 Quaternion = ");
 
+
+	// w1*w2
+	float W = w1 * w2;													printf("[function Quat operator*]w1*w2 = %f\n", W);
+	// v1 . v2															
+	float V = vector3Quat.DotProduct(v1 , v2);							printf("[function Quat operator*] v1 . v2 = %f\n", V);
+	// v1 X v2
+	Vector3 VC = vector3Quat.crossProduct(v1, v2);						VC.print("[function Quat operator*] v1 X v2 =");
+	// w1v2 + w2v1
+	q1.operator+(q2);													q1.print("[function Quat operator*] q1 = q1 + q2 =");
+	Quaternion Q = q1;													Q.print("[function Quat operator*]  Q  = q1 + q2 =");
+
+
+	// w1*w2 - v1 . v2 + w1v2 + w2v1 + v1 X v2
+	// w1 * w2 - v1.x * v2.x - v1.y * v2.y - v1.z * v2.z // 1
+	// w1 * v2.x + v1.x * w2 + v1.y * v2.z - v1.z * v2.y // i
+	// w1 * v2.y - v1.x * v2.z + v1.y * w2 + v1.z * v2.x // j
+	// w1 * v2.z + v1.x * v2.y - v1.y * v2.x + v1.z * w2 // k
+
+	
+	// a.w * b.w - a.x * b.x - a.y * b.y - a.z * b.z,  // 1
+	// a.w * b.x + a.x * b.w + a.y * b.z - a.z * b.y,  // i
+	// a.w * b.y - a.x * b.z + a.y * b.w + a.z * b.x,  // j
+	// a.w * b.z + a.x * b.y - a.y * b.x + a.z * b.w   // k
 
 	Quaternion ijkz;
 	return ijkz;

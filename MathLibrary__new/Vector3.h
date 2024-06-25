@@ -52,6 +52,7 @@ public:
 		}
 	}
 	~Vector3();
+	void printW(std::string note);
 	void print(std::string note);
 	void print();
 
