@@ -1,0 +1,107 @@
+﻿  MathLibrary__new.cpp
+  Vector.cpp
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(64,13): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(65,13): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(66,13): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(78,13): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(79,13): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(80,13): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(93,13): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(94,13): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(95,13): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(107,13): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(108,13): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(109,13): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(121,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(122,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(123,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(127,13): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(132,11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(133,11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(134,11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(162,4): warning C4552: '/': result of expression not used
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(163,4): warning C4552: '/': result of expression not used
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(164,4): warning C4552: '/': result of expression not used
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(177,11): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(178,11): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(179,11): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(182,17): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(172,16): warning C4101: 'fvz': unreferenced local variable
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(172,6): warning C4101: 'fvx': unreferenced local variable
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(172,11): warning C4101: 'fvy': unreferenced local variable
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(229,29): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(230,7): warning C4930: 'Vec3 Dot_Product_Vector(void)': prototyped function not called (was a variable definition intended?)
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(244,8): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(245,8): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(246,8): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(248,8): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(249,8): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(250,8): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(257,26): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(257,22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(257,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(304,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(305,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(306,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(323,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(324,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(325,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(358,15): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(359,15): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(360,15): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(362,15): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(363,15): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(364,15): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(367,16): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(368,16): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(460,8): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(461,8): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(462,8): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(463,8): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(464,8): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(465,8): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(468,8): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(469,8): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(470,8): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(471,8): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(472,8): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(473,8): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(488,13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(489,13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(497,24): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(506,13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(515,24): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(522,13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(523,13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(531,24): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(538,42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(538,27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(538,12): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(627,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(628,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(629,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(632,44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(632,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(632,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(752,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(753,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(754,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(1073,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(1074,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(1075,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(1082,13): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(1142,62): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(1142,44): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(1142,26): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(1153,26): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(26,1): warning C4172: returning address of local variable or temporary: Q
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(140,1): warning C4172: returning address of local variable or temporary: returnMagVec
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(414,1): warning C4172: returning address of local variable or temporary: crossprodreturn
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(393,1): warning C4172: returning address of local variable or temporary: dotProdretrun
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(654,1): warning C4172: returning address of local variable or temporary
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(676,1): warning C4172: returning address of local variable or temporary
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(639,1): warning C4172: returning address of local variable or temporary: Cross_Product_Return_int
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(541,1): warning C4172: returning address of local variable or temporary: Norm
+E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\MathLibrary__new\Vector.cpp(698,1): warning C4172: returning address of local variable or temporary
+  MathLibrary__new.vcxproj -> E:\Documents\Humber Courses\GameMath\Math2\MathVer5\MathLibrary__new\MathLibrary__new\x64\Debug\MathLibrary__new.exe
