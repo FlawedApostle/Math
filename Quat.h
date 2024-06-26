@@ -2,6 +2,9 @@
 #include "math.h"
 #include "Vector.h"
 #include "Vector3.h"
+#define PI 3.145926535;
+#define RADIANStoDEGREES 3.145926535 / 180;
+
 class Vec3;
 class Vec4;
 class Vector3;
@@ -81,7 +84,7 @@ public:
 	Quaternion operator * (Quaternion Quat1);
 
 	//Quaternion rotateQuaternion(Vec3 xyz, float w);
-	Quaternion rotateQuaternion(Vector3 xyz, float rot);
+	Vector3 rotateQuaternion(Vector3 xyz, float rot);
 	Quaternion normalizeQuaternion(Quaternion xyzw);
 	Quaternion conjugateQuaternion(Quaternion xyzw);
 	Quaternion inverseQuaternion(Quaternion xyzw);

@@ -1,5 +1,7 @@
 #include <iostream>
 #include "Quat.h"
+#include "cmath"
+#include "math.h"
 
 void Quaternion::print()
 {
@@ -109,7 +111,7 @@ Quaternion Quaternion::operator*(Quaternion otherQuat)
 
 }
 
-Quaternion Quaternion::rotateQuaternion(Vector3 xyz, float rot)
+Vector3 Quaternion::rotateQuaternion(Vector3 xyz, float rot)
 {
 	// To rotate a Quaternion:
 	// Set w = 0
@@ -119,15 +121,57 @@ Quaternion Quaternion::rotateQuaternion(Vector3 xyz, float rot)
 	//							cos(rotValue / 1/2) + sin(rotValue / 1/2) * [i,j,k]
 	
 	/// Data
-	Vector3 Normal(xyz.getVector3x(), xyz.getVector3y(), xyz.getVector3z());
-	Normal.printW("[Quaternion::rotateQuaternion()] , Normal =");
-	printf("Rotation= %f\n", rot);
+	float I, J, K;
+	I = xyz.getVector3x();
+	J = xyz.getVector3y();
+	K = xyz.getVector3z();
+	Vector3 Normal(I, J, K);
+
+	float rotationW;
+	float r , o , t;
+	float rotTheta , rotCos , rotSin;
+	float Rot = rot;
+	r = 2;
+	o = Rot;
+	t = Rot / r;
+	float ROT = t;
+	printf("Rotation 1/2 = %f\n", ROT);
+	
+	// convert from radians to degrees ! 
+	// theta * 3.141592 / 180 = radians
+	// cos(radians) = correct answer 
+	float rot_ = ROT * 3.141592 / 180;
+	printf("rot to radians = \%f\n", rot_);
+	
+
+	/// Answer 0.86	
+	rotCos = cos(rot_);	
+	rotSin = sin(rot_);	
+	printf("Rotation cos Theta = %f\n", rotCos);
+	printf("Rotation sin Theta = %f\n", rotSin);
+
+	
+
+	/* multiply degrees to radians
+		* c++ is in degrees , must convert to radians with PI/180
+	*/
+	//float rotCosRad = rotCos * RADIANStoDEGREES;
+	//float rotSinRad = rotSin * RADIANStoDEGREES;
+	//printf("Rotation cos Theta = %f\n", rotCosRad);
+	//printf("Rotation sin Theta = %f\n", rotSinRad);
+	
+	Normal.print("[Quaternion::rotateQuaternion()] , Normal =");
 	Normal.normalize(Normal);
 	Normal.print("[Vector3::normalize()] , Normal normalized =");
 	
+	float i, j, k;
+	i = I * rotSin;
+	j = J * rotSin;
+	k = K * rotSin;
+	//w = rotationW;
 	
 
-	Quaternion ijkz;
+	Vector3 ijkz(i,j,k);
 	return ijkz;
 }
 
@@ -243,3 +287,6 @@ Quaternion::~Quaternion()
 	//printf("Deleting Quaternion Scene :: File Location %s", __FILE__);
 	//printf("Im beyond disappointed with my self this Semester....\n");
 }
+
+#undef PI;
+#undef RADIANStoDEGREES;
