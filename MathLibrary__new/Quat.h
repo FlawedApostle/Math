@@ -76,7 +76,17 @@ public:
 	void print(std::string note);
 	void printVector3(std::string note);
 
-	// get private setter
+	// overload the * operator to multiply two quaternions
+	Quaternion operator + (Quaternion Quat1);
+	Quaternion operator * (Quaternion Quat1);
+
+	Quaternion rotateQuaternion(Vec3 xyz, float w);
+	Quaternion normalizeQuaternion(Quaternion xyzw);
+	float magnitudeQuaternion(Quaternion xyzw);
+
+
+
+	/// Getters
 	Quaternion getQuaternion()
 	{
 		Quaternion Quaternion(x, y, z, w);
@@ -94,12 +104,6 @@ public:
 	Vector3 getQuaternionVector3()
 	{
 		return vector3Quat.getVector3();
-		 /*std::cout << vector3Quat.getVector3();*/
+		/*std::cout << vector3Quat.getVector3();*/
 	}
-	
-	// overload the * operator to multiply two quaternions
-	Quaternion operator + (Quaternion Quat1);
-	Quaternion operator * (Quaternion Quat1);
-
-	Quaternion rotateQuaternion(Vec3 xyz, float w);
 };

@@ -363,7 +363,13 @@ int main()
 	v2.print("v2 = ");
 	//times1.operator+(times2);
 	v1.operator*(v2);
-	//times1.print("Times one multipled");
+	v1.print("Quat v1 * Quat v2 =");
+
+	Quaternion v3(1, 2, 2, 3);
+	float V3 = v3.magnitudeQuaternion(v3);
+	printf("V3 = %f\n", V3);
+	//v3.normalizeQuaternion(v3);
+	//v3.print("v3 normalize=");
 	//times1.printVector3("Times one multipled ");
 
 	
