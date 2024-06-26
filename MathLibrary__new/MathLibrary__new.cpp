@@ -287,90 +287,74 @@ int main()
 
 	// Note 1.... This is just a test to check the math was working, prior to implimenting to a function, eventually i'll delete this, for now its just reference!
 	/*
-	//float square_root_Add_all = sqrt((pow(2.0f, 2.0f) + (pow(4.0f, 2.0f) + (pow(6.0f, 2.0f)))));
-	//
-	//
-	//float powA = pow(2.0f, 2);
-	//float powB = pow(4.0f, 2);
-	//float powC = pow(6.0f, 2);
-	//
-	//float answerPow = powA + powB + powC;
-	//
-	//float squareAnswerPow = sqrt(answerPow);
-	//
-	//std::cout << powA << std::endl;
-	//std::cout << powB << std::endl;
-	//std::cout << powC << std::endl;
-	//std::cout << answerPow << std::endl;
-	//std::cout << squareAnswerPow << std::endl;
-	//std::cout << square_root_Add_all << std::endl;
+		*float square_root_Add_all = sqrt((pow(2.0f, 2.0f) + (pow(4.0f, 2.0f) + (pow(6.0f, 2.0f)))));
+		*
+		*
+		*float powA = pow(2.0f, 2);
+		*float powB = pow(4.0f, 2);
+		*float powC = pow(6.0f, 2);
+		*
+		*float answerPow = powA + powB + powC;
+		*
+		*float squareAnswerPow = sqrt(answerPow);
+		*
+		*std::cout << powA << std::endl;
+		*std::cout << powB << std::endl;
+		*std::cout << powC << std::endl;
+		*std::cout << answerPow << std::endl;
+		*std::cout << squareAnswerPow << std::endl;
+		*std::cout << square_root_Add_all << std::endl;
 	*/
 
 	// Note 2.... This is just a test to check the math was working, prior to implimenting to a function, eventually i'll delete this, for now its just reference!
 	/*
-	//int x = 4;
-	//x += 2;
-	//Vec3 v(2, 4, 5);
-	//// vec3 Normalize();
-	//Vec3 N = v.Normalize();
-	//
-	//
-	//Vec3 u(1, 2, 1);
-	//Vec3 w = u + v;
-	//w += u;// w=w+u;
-	//std::cout << w.x << " " << w.y << " " << w.z << std:: endl;
+		*int x = 4;
+		*x += 2;
+		*Vec3 v(2, 4, 5);
+		* vec3 Normalize();
+		*Vec3 N = v.Normalize();
+		*
+		*
+		*Vec3 u(1, 2, 1);
+		*Vec3 w = u + v;
+		*w += u;// w=w+u;
+		*std::cout << w.x << " " << w.y << " " << w.z << std:: endl;
    */
 	
    ///															Quaternion
-	//Quaternion quaternion_(2, 4, 6, 8);
-	//quaternion_.print("Test quat");
-	//Quaternion quaternion;
-	//quaternion.print("Test quat 2");
-	//Quaternion quatAdd(4,4,4,4);
-	//Quaternion quatAdd1(1, 1, 1, 1);
-	//quatAdd.operator+(quatAdd1);
-	//quatAdd.print("quatAdd");
-	//Quaternion quatVec4(77, 77, 77, 777);
-	//quatVec4.getQuaternionVec4();
-	//quatVec4.print("QuatVec4");
-	//Quaternion quatVec3(25, 23, 25, 7);
-	//quatVec3.getQuaternionVec3();
-	//quatVec3.print("QuatVec3");
-	//
-	//Quaternion MUL;
-	//Quaternion Mul1(1, 2, 2, 3);
-	//Quaternion Mul2(2, 1, 2, 5);
-	//Mul1.print("Mul1 = ");
-	//Mul2.print("Mul2 = ");
-
-	////MUL = Mul1.operator*(Mul2);
-	////MUL.print("MUL = ");
-	//std::cout << std::endl;
-
-	//Vector3 v1(10,7,8);
-	//Vector3 v2(2,10,4);
-	//Vector3 vAnswer1;
-	//v1.print("v1");
-	//v2.print("v2");
-	//Vector3 ev3;
-	//ev3.print("Empty Vector init");
-	//std::cout << std::endl;
-
-
+   /// Test Answer  [13, 15, 13, 7]
 	Quaternion v1(1, 2, 2, 3);
+	Quaternion v1Add(1, 2, 2, 3);
+	Quaternion v1Multiplication(1, 2, 2, 3);
 	Quaternion v2(2, 1, 2, 5);
-	v1.print("v1 = ");
-	v2.print("v2 = ");
-	//times1.operator+(times2);
-	v1.operator*(v2);
-	v1.print("Quat v1 * Quat v2 =");
-
+	Quaternion v2Copy(2, 1, 2, 5);
+	v1.print("[main()] v1 = ");
+	v2.print("[main()] v2 = ");
+	// +
+	v1Add.operator+(v2);
+	v1Add.print("[main()] Addition Quaternion test =\n");
+	// *
+	v1Multiplication.operator*(v2);
+	v1Multiplication.print("Multiply Quaternion test =\n");
+	// ||Q||
+	std::cout << std::endl;
 	Quaternion v3(1, 2, 2, 3);
-	float V3 = v3.magnitudeQuaternion(v3);
-	printf("V3 = %f\n", V3);
-	//v3.normalizeQuaternion(v3);
-	//v3.print("v3 normalize=");
-	//times1.printVector3("Times one multipled ");
+	float magnitudeQuaterntion_test = v3.magnitudeQuaternion(v3);
+	printf("[main()] Mag test v3 = %f\n", magnitudeQuaterntion_test);
+	// normalize
+	Quaternion normalizev3_test;
+	normalizev3_test.normalizeQuaternion(v3);
+	normalizev3_test.print("Normalize test v3 =");
+	// conjugate
+	std::cout << std::endl;
+	Quaternion v3Conjugate(1, 2, 2, 3);
+	v3Conjugate.conjugateQuaternion(v3Conjugate);
+	v3Conjugate.print("[main()] Conjugate =");
+	std::cout << std::endl;
+	// inverse
+	Quaternion inverseQuat(1, 2, 2, 3);
+	inverseQuat.inverseQuaternion(inverseQuat);
+	//inverseQuat.print("[main()] InverseQuat = \n");
 
 	
 

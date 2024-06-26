@@ -82,6 +82,8 @@ public:
 
 	Quaternion rotateQuaternion(Vec3 xyz, float w);
 	Quaternion normalizeQuaternion(Quaternion xyzw);
+	Quaternion conjugateQuaternion(Quaternion xyzw);
+	Quaternion inverseQuaternion(Quaternion xyzw);
 	float magnitudeQuaternion(Quaternion xyzw);
 
 

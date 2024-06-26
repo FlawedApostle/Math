@@ -22,12 +22,17 @@ Quaternion Quaternion::operator+(Quaternion Quat1)
 {
 	// w1 v1 + w2 v2
 	// w1+w2 + vx1+vx2 + yv1+yv2 + zv1+zv2
-	//return Quaternion
-	//(
+	
 	w = w + Quat1.w;
 	x = x + Quat1.x;
 	y = y + Quat1.y;
 	z = z + Quat1.z;
+
+	float i, j, k, W;
+	W = w;
+	i = x;
+	j = y;
+	k = z;
 
 	/// Adding the xyz components of Vector3 class, created in Quat constructor
 	//vector3Quat.setVector3x(x);
@@ -35,7 +40,7 @@ Quaternion Quaternion::operator+(Quaternion Quat1)
 	//vector3Quat.setVector3z(z);
 	//vector3Quat.setVector3w(w);
 
-	Quaternion ijkz(x, y, z , w);
+	Quaternion ijkz(x,y,z,w);
 	return ijkz;
 	//);
 }
@@ -114,8 +119,6 @@ Quaternion Quaternion::rotateQuaternion(Vec3 xyz, float w)
 
 Quaternion Quaternion::normalizeQuaternion(Quaternion xyzw)
 {
-	Quaternion IJK(xyzw.x, xyzw.y, xyzw.z , xyzw.w);
-	IJK.print("IJK input =");
 	float W = pow(xyzw.w, 2);
 	float i = pow(xyzw.x, 2);
 	float j = pow(xyzw.y, 2);
@@ -135,23 +138,81 @@ Quaternion Quaternion::normalizeQuaternion(Quaternion xyzw)
 	z = xyzw.z / ikjw;
 
 	//  Test Answer (0.235702, 0.471405, 0.471405, 0.707107)
-	Quaternion ikjww(x,y,z,w);
+	Quaternion ikjww(x ,y ,z ,w);
 	return ikjww;
+}
+
+Quaternion Quaternion::conjugateQuaternion(Quaternion xyzw)
+{
+	/*
+		* Research proposed this is the ideal way of setting an obj to a neg value
+		* Concencus is it works, but isn't optimal.
+		* Setting each incoming vector indices to a temporary float value on the stack
+		* creating a new stack object, then equaling the temporary float indices to a negative value
+		* conjugate formula					w - xi - yj - zk
+	
+	*/
+	float I = xyzw.x;
+	float i = -I;	
+	
+	float J = xyzw.y;
+	float j = -J;	
+
+	float K = xyzw.z;
+	float k = -K;	
+
+	float W = xyzw.w;
+	float w_ = -W;
+
+	x = i;			
+	y = j;			
+	z = k;			
+	w = w_;		
+
+	// w - xi - yj - zk
+	Quaternion ijk(i,j,k,w_);
+	return ijk;
+}
+
+Quaternion Quaternion::inverseQuaternion(Quaternion xyz)
+{
+	// inverse is equal to: 
+	// the conjugate divided by the Mag squared
+	float I, J, K, W;
+	Quaternion magnitude(xyz.x, xyz.y, xyz.z, xyz.w);
+	float mag = magnitude.magnitudeQuaternion(magnitude);
+	printf("[Quaternion::inverseQuaternion()] , Magnitude= %f\n", mag);
+
+	Quaternion conjugate(xyz.x, xyz.y, xyz.z, xyz.w);
+	conjugate.conjugateQuaternion(conjugate);
+	conjugate.print("[Quaternion::inverseQuaternion()] , Conjugate=");
+
+	I = conjugate.x / pow(mag,2); printf("I=%f\n",I);
+	J = conjugate.y / pow(mag,2); printf("J=%f\n",J);
+	K = conjugate.z / pow(mag,2); printf("K=%f\n",K);
+	W = conjugate.w / pow(mag,2); printf("W=%f\n",W);
+
+	float i, j, k;
+	i = I;
+	j = J;
+	k = K;
+	w = W;
+
+	Quaternion ijk(i, j, k,w);
+	return ijk;
 }
 
 float Quaternion::magnitudeQuaternion(Quaternion xyzw)
 {
-	Quaternion IJK(xyzw.x, xyzw.y, xyzw.z, xyzw.w);
-	IJK.print("IJK input =");
 	float W = pow(xyzw.w, 2);
 	float i = pow(xyzw.x, 2);
 	float j = pow(xyzw.y, 2);
 	float k = pow(xyzw.z, 2);
 
-	x = i;
-	y = j;
-	z = k;
-	w = W;
+	//x = i;
+	//y = j;
+	//z = k;
+	//w = W;
 
 	float ijkz = i + j + k + W;
 	float ijkMag = sqrt(ijkz);
