@@ -81,7 +81,7 @@ public:
 	Quaternion operator * (Quaternion Quat1);
 
 	//Quaternion rotateQuaternion(Vec3 xyz, float w);
-	Quaternion rotateQuaternion(Vector3 xyz, float w);
+	Quaternion rotateQuaternion(Vector3 xyz, float rot);
 	Quaternion normalizeQuaternion(Quaternion xyzw);
 	Quaternion conjugateQuaternion(Quaternion xyzw);
 	Quaternion inverseQuaternion(Quaternion xyzw);

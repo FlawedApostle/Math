@@ -109,7 +109,7 @@ Quaternion Quaternion::operator*(Quaternion otherQuat)
 
 }
 
-Quaternion Quaternion::rotateQuaternion(Vector3 xyz, float w)
+Quaternion Quaternion::rotateQuaternion(Vector3 xyz, float rot)
 {
 	// To rotate a Quaternion:
 	// Set w = 0
@@ -119,6 +119,11 @@ Quaternion Quaternion::rotateQuaternion(Vector3 xyz, float w)
 	//							cos(rotValue / 1/2) + sin(rotValue / 1/2) * [i,j,k]
 	
 	/// Data
+	Vector3 Normal(xyz.getVector3x(), xyz.getVector3y(), xyz.getVector3z());
+	Normal.printW("[Quaternion::rotateQuaternion()] , Normal =");
+	printf("Rotation= %f\n", rot);
+	Normal.normalize(Normal);
+	Normal.print("[Vector3::normalize()] , Normal normalized =");
 	
 	
 

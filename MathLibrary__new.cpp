@@ -201,38 +201,38 @@ int main()
 
 	// Note 1.... This is just a test to check the math was working, prior to implimenting to a function, eventually i'll delete this, for now its just reference!
 	/*
-		*float square_root_Add_all = sqrt((pow(2.0f, 2.0f) + (pow(4.0f, 2.0f) + (pow(6.0f, 2.0f)))));
-		*
-		*
-		*float powA = pow(2.0f, 2);
-		*float powB = pow(4.0f, 2);
-		*float powC = pow(6.0f, 2);
-		*
-		*float answerPow = powA + powB + powC;
-		*
-		*float squareAnswerPow = sqrt(answerPow);
-		*
-		*std::cout << powA << std::endl;
-		*std::cout << powB << std::endl;
-		*std::cout << powC << std::endl;
-		*std::cout << answerPow << std::endl;
-		*std::cout << squareAnswerPow << std::endl;
-		*std::cout << square_root_Add_all << std::endl;
+		*	float square_root_Add_all = sqrt((pow(2.0f, 2.0f) + (pow(4.0f, 2.0f) + (pow(6.0f, 2.0f)))));
+		*	
+		*	
+		*	float powA = pow(2.0f, 2);
+		*	float powB = pow(4.0f, 2);
+		*	float powC = pow(6.0f, 2);
+		*	
+		*	float answerPow = powA + powB + powC;
+		*	
+		*	float squareAnswerPow = sqrt(answerPow);
+		*	
+		*	std::cout << powA << std::endl;
+		*	std::cout << powB << std::endl;
+		*	std::cout << powC << std::endl;
+		*	std::cout << answerPow << std::endl;
+		*	std::cout << squareAnswerPow << std::endl;
+		*	std::cout << square_root_Add_all << std::endl;
 	*/
 
 	// Note 2.... This is just a test to check the math was working, prior to implimenting to a function, eventually i'll delete this, for now its just reference!
 	/*
-		*int x = 4;
-		*x += 2;
-		*Vec3 v(2, 4, 5);
-		* vec3 Normalize();
-		*Vec3 N = v.Normalize();
-		*
-		*
-		*Vec3 u(1, 2, 1);
-		*Vec3 w = u + v;
-		*w += u;// w=w+u;
-		*std::cout << w.x << " " << w.y << " " << w.z << std:: endl;
+		*	int x = 4;
+		*	x += 2;
+		*	Vec3 v(2, 4, 5);
+		*	 vec3 Normalize();
+		*	Vec3 N = v.Normalize();
+		*	
+		*	
+		*	Vec3 u(1, 2, 1);
+		*	Vec3 w = u + v;
+		*	w += u;// w=w+u;
+		*	std::cout << w.x << " " << w.y << " " << w.z << std:: endl;
    */
 	
    /// ********************************************************************* Quaternion ************************************************************************************************************************************************* //
@@ -270,6 +270,12 @@ int main()
 	Quaternion inverseQuat(1, 2, 2, 3);
 	inverseQuat.inverseQuaternion(inverseQuat);
 	inverseQuat.print("[main()] InverseQuat = \n");
+	std::cout << std::endl;
+	// Rotate
+	Quaternion rotateQuat;
+	float rotQuatf = 60;
+	Vector3 rotateQuatv3(0, 3, 4);
+	rotateQuat.rotateQuaternion(rotateQuatv3, rotQuatf);
 
 	
 
