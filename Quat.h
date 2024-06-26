@@ -2,8 +2,8 @@
 #include "math.h"
 #include "Vector.h"
 #include "Vector3.h"
-#define PI 3.145926535;
-#define RADIANStoDEGREES 3.145926535 / 180;
+//#define PI 3.145926535;
+//#define RADIANStoDEGREES 3.145926535 / 180;
 
 class Vec3;
 class Vec4;
@@ -22,7 +22,8 @@ protected:
 	float y;
 	float z;
 	float w;
-
+	float pi = 3.141592653;
+	float RADIANStoDEGREES = 3.141592653 / 180;
 	// set variables
 	void const setQuaternion(float x_, float y_, float z_, float w_)
 	{
@@ -59,6 +60,7 @@ protected:
 	}
 
 public:
+
 	//Quaternion(const Quaternion&) {};
 	Quaternion()
 	{

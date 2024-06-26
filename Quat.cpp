@@ -140,7 +140,7 @@ Vector3 Quaternion::rotateQuaternion(Vector3 xyz, float rot)
 	// convert from radians to degrees ! 
 	// theta * 3.141592 / 180 = radians
 	// cos(radians) = correct answer 
-	float rot_ = ROT * 3.141592 / 180;
+	float rot_ = ROT * RADIANStoDEGREES;
 	printf("rot to radians = \%f\n", rot_);
 	
 
@@ -288,5 +288,5 @@ Quaternion::~Quaternion()
 	//printf("Im beyond disappointed with my self this Semester....\n");
 }
 
-#undef PI;
-#undef RADIANStoDEGREES;
+//#undef PI;
+//#undef RADIANStoDEGREES;
