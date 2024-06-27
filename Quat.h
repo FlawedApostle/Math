@@ -35,7 +35,6 @@ protected:
 
 	void const setQuaternionVec4(float x_, float y_, float z_, float w_)
 	{
-
 		vecQuat4.x = x_;
 		vecQuat4.y = y_;
 		vecQuat4.z = z_;
@@ -76,6 +75,14 @@ public:
 		setQuaternionVec4(x_, y_, z_, w_);
 		setQuatVector3(x_, y_, z_, w_);
 	}
+	Quaternion(float W , Vector3 v) 
+	{
+		x = v.setVector3x(x);
+		y = v.setVector3y(y);
+		z = v.setVector3z(z);
+		w = W;
+		//v.setVector3w(w);
+	}
 	~Quaternion();
 	void print();
 	void print(std::string note);
@@ -84,12 +91,19 @@ public:
 	// overload the * operator to multiply two quaternions
 	Quaternion operator + (Quaternion Quat1);
 	Quaternion operator * (Quaternion Quat1);
+	Quaternion operator - (Quaternion Quat1);
+	// Square function , multiply the input Quaternion by itself
+	// operator =
+	Quaternion operator=(Quaternion& q);
+	// scalar multiplication
+	Quaternion operator*(float scalar);
 
 	//Quaternion rotateQuaternion(Vec3 xyz, float w);
-	Vector3 rotateQuaternion(Vector3 xyz, float rot);
+	Vector3 rotateQuaternion(Vector3 axis, float rot);
 	Quaternion normalizeQuaternion(Quaternion xyzw);
 	Quaternion conjugateQuaternion(Quaternion xyzw);
 	Quaternion inverseQuaternion(Quaternion xyzw);
+	float dotQuaternion(Quaternion xyzw);
 	float magnitudeQuaternion(Quaternion xyzw);
 
 

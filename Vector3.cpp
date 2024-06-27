@@ -14,7 +14,7 @@ Vector3::~Vector3()
 void Vector3::printW(std::string note)
 {
 	std::cout << note;
-	//printf("(%f,%f,%f) (w = %f)\n", x, y, z, w);
+	printf("(%f,%f,%f) (w = %f)\n", x, y, z, w);
 }
 void Vector3::print(std::string note)
 {

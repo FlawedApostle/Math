@@ -6,6 +6,7 @@
 #include "math.h"
 #include "Quat.h"
 #include "Vector3.h"
+#include "Vector4.h"
  
 int main()
 {
@@ -179,7 +180,7 @@ int main()
 	Ray ray , rayQ , rayStart;
 	Ray rayDirection , rQ;
 	
-	rayStart.SetStart(-3,0,6);				/// S Ray
+	rayStart.SetStart(-3,0,6);
 	//rayStart.printStartPoint();
 
 	rayStart.SetDirection(10, 2, -3);
@@ -273,9 +274,32 @@ int main()
 	std::cout << std::endl;
 	// Rotate
 	Quaternion rotateQuat;
-	float rotQuatf = 60;
-	Vector3 rotateQuatv3(0, 3, 4);
+	float rotQuatf = 90;
+	Vector3 rotateQuatv3(1, 0, 0);
 	rotateQuat.rotateQuaternion(rotateQuatv3, rotQuatf);
+	/// multiply
+	//Quaternion o1(-3,4,1,2);
+	//Quaternion o2(2,3,1,-4);
+	//float doto1 = o1.dotQuaternion(o2);
+	//printf("o1 Dot o2 = %f\n", doto1);
+	//// Multiply Quaternion with Scalar Value
+	//Quaternion sV(2, 2, 2, 2);
+	//sV.operator*(2);
+	//sV.print("Scalar Value * Quaternion=");
+
+	std::cout <<std::endl;
+///************************************************** Vector4 *****************************************************//
+	//Vector4 Vector4Test(7, 6, 5, 4);
+	//Vector3 Vector3Test(1, 2, 3);
+	//Vector4 Vector4CTest(Vector3Test);
+	//Vector4CTest.print("Vector3 into a Vector4 constructor");
+
+	std::cout << std::endl;
+///************************************************** Vector3 *****************************************************//
+	Vector3 scalarVecTest(2, 4, 6);
+	scalarVecTest.operator*(2);
+	scalarVecTest.print("scalarVecTest=");
+	
 
 	
 

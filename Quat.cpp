@@ -111,8 +111,43 @@ Quaternion Quaternion::operator*(Quaternion otherQuat)
 
 }
 
-Vector3 Quaternion::rotateQuaternion(Vector3 xyz, float rot)
+Quaternion Quaternion::operator-(Quaternion Quat1)
 {
+	// [w1 - w2 , x1 - x2 , y1 - y2 , z1 - z2 - w1 - w2]
+	Quaternion ijkw(x,y,z,w);
+	return ijkw;
+}
+
+Quaternion Quaternion::operator=(Quaternion& q)
+{
+	x = q.x;
+	y = q.y;
+	z = q.z;
+	w = q.w;
+
+
+	Quaternion ijkw(x,y,z,w);
+	return ijkw;
+}
+
+Quaternion Quaternion::operator*(float scalar)
+{
+	Vector3 qs(x,y,z);
+	Quaternion ijkw(w = w * scalar,x = qs.getVector3x() * scalar, y = qs.getVector3y() * scalar, z = qs.getVector3z() * scalar);
+	ijkw.operator=(ijkw);
+	return ijkw;
+}
+
+Vector3 Quaternion::rotateQuaternion(Vector3 axis, float rot)
+{
+	/// Function Requirments !
+	/*
+		//  Testing Vec3 Rotate(Vec3 vec)
+		//  First create a quaternion that represents a rotation of 90 degrees about the z axis
+		//  Then rotate the vector [1, 0, 0] by this quaternion
+		//  Your result should be [0 , 1, 0]
+	*/
+
 	// To rotate a Quaternion:
 	// Set w = 0
 	// normalize the Now Vector3 (formly a quaterntion vector prior to w being set to 0)
@@ -122,9 +157,9 @@ Vector3 Quaternion::rotateQuaternion(Vector3 xyz, float rot)
 	
 	/// Data
 	float I, J, K;
-	I = xyz.getVector3x();
-	J = xyz.getVector3y();
-	K = xyz.getVector3z();
+	I = axis.getVector3x();
+	J = axis.getVector3y();
+	K = axis.getVector3z();
 	Vector3 Normal(I, J, K);
 
 	float rotationW;
@@ -142,36 +177,42 @@ Vector3 Quaternion::rotateQuaternion(Vector3 xyz, float rot)
 	// cos(radians) = correct answer 
 	float rot_ = ROT * RADIANStoDEGREES;
 	printf("rot to radians = \%f\n", rot_);
-	
-
 	/// Answer 0.86	
 	rotCos = cos(rot_);	
 	rotSin = sin(rot_);	
 	printf("Rotation cos Theta = %f\n", rotCos);
 	printf("Rotation sin Theta = %f\n", rotSin);
 
-	
 
-	/* multiply degrees to radians
-		* c++ is in degrees , must convert to radians with PI/180
-	*/
-	//float rotCosRad = rotCos * RADIANStoDEGREES;
-	//float rotSinRad = rotSin * RADIANStoDEGREES;
-	//printf("Rotation cos Theta = %f\n", rotCosRad);
-	//printf("Rotation sin Theta = %f\n", rotSinRad);
-	
 	Normal.print("[Quaternion::rotateQuaternion()] , Normal =");
 	Normal.normalize(Normal);
 	Normal.print("[Vector3::normalize()] , Normal normalized =");
 	
 	float i, j, k;
-	i = I * rotSin;
-	j = J * rotSin;
-	k = K * rotSin;
 	//w = rotationW;
 	
+	/// cosVal * rotationAxis * sinVal == rotCos * Normal * rotSin
+	// rotCos = w , Normal * rotSin (scalar multiplication of Vec3)
+	Normal.operator*(rotSin);
+	Normal.print("Normal Vector3 * Scalar Value rotSin=");
+	Vector3 finalaxisOfRotation(Normal.getVector3x(), Normal.getVector3y(), Normal.getVector3z());
+	finalaxisOfRotation.print("Final Axis Rotation Vector3 = ");
+	
+	Quaternion ijkw;
+	Vector3 ijkz;
+	ijkw.x = ijkz.setVector3x(finalaxisOfRotation.getVector3x());
+	ijkw.y = ijkz.setVector3y(finalaxisOfRotation.getVector3y());
+	ijkw.z = ijkz.setVector3z(finalaxisOfRotation.getVector3z());
+	ijkw.w = rotCos;
+	
+	ijkz.setVector3x(ijkw.x);
+	ijkz.setVector3y(ijkw.y);
+	ijkz.setVector3z(ijkw.z);
+	ijkz.setVector3w(ijkw.w);
 
-	Vector3 ijkz(i,j,k);
+
+	//ijkw.print("[Quaternion::Rotation()] , ijkw =");
+	ijkz.print("[Quaternion::Rotation()] , ijkz =");
 	return ijkz;
 }
 
@@ -262,6 +303,34 @@ Quaternion Quaternion::inverseQuaternion(Quaternion xyz)
 
 	Quaternion ijk(i, j, k,w);
 	return ijk;
+}
+
+float Quaternion::dotQuaternion(Quaternion xyzw)
+{
+	// w1*w2 + x1*x2 + y1*y2 + z1*z2
+	float i, j, k, W;
+
+	/*
+		 //	printf("xyzw = (%f,%f,%f,%f)\n", x, y, z,w);
+		 //	printf("xyzw = (%f,%f,%f,%f)\n", xyzw.x, xyzw.y, xyzw.z, xyzw.w);
+		 //		x , y , z , w	xyzw.x
+		 //						xyzw.y
+		 //						xyzw.z
+		 //						xyzw.w
+	*/
+	i = x * xyzw.x;
+	j = y * xyzw.y;
+	k = z * xyzw.z;
+	W = w * xyzw.w;
+
+	x = i;
+	y = j;
+	z = k;
+	w = W;
+
+	float dotQuat = i+j+k+W;
+
+	return dotQuat;
 }
 
 float Quaternion::magnitudeQuaternion(Quaternion xyzw)
