@@ -70,6 +70,7 @@ public:
 	Vector3& operator + (const Vector3& v);
 	Vector3& operator - (const Vector3& v);
 	Vector3& operator * (const float scalar);
+	Vector3& operator * (const Vector3& v);
 
 
 	Vector3& normalize(Vector3& a);

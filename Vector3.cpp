@@ -105,6 +105,16 @@ Vector3& Vector3::operator*(const float scalar)
 
 }
 
+Vector3& Vector3::operator*(const Vector3& v)
+{
+	x = x * v.x;
+	y = y * v.y;
+	z = z * v.z;
+	Vector3 ijk(x, y, z);
+	return ijk;
+
+}
+
 // Perpendicular Cross Product 2D
 /*
 	*I want to add a 2D cross product, 

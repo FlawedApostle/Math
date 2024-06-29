@@ -125,13 +125,19 @@ Vector3 Quaternion::rotateQuaternion(Vector3 q, float theta)
 	*/		
 
 	// Data
+	float angle = theta;			printf("theta = %f\n", angle);
 	float i, j, k;
 	i = q.getVector3x();
 	j = q.getVector3y();
 	k = q.getVector3z();
-	Vector3 IJK(i, j, k);
+	Vector3 vecQuat(i, j, k);		vecQuat.print("vector3 Quat = ");
 
-	Quaternion Q(w = 0,IJK);
+	Quaternion Q(w = 0, vecQuat);	Q.print("Newley set Vector3 Quaternion = ");
+	Q.inverseQuaternion(Q);
+	Quaternion Qinverse(Q);
+	Qinverse.print("Qinverse = ");
+
+
 
 
 	

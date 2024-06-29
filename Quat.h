@@ -77,11 +77,21 @@ public:
 	}
 	Quaternion(float W , Vector3 v) 
 	{
-		x = v.setVector3x(x);
-		y = v.setVector3y(y);
-		z = v.setVector3z(z);
+		x = v.getVector3x();
+		y = v.getVector3y();
+		z = v.getVector3z();
 		w = W;
 		//v.setVector3w(w);
+	}
+	Quaternion(Quaternion& q)
+	{
+		x = q.x;
+		y = q.y;
+		z = q.z;
+		w = q.w;
+		setQuaternionVec3(q.x, q.y, q.z, q.w);
+		setQuaternionVec4(q.x, q.y, q.z, q.w);
+		setQuatVector3(q.x, q.y, q.z, q.w);
 	}
 	~Quaternion();
 	void print();

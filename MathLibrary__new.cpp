@@ -237,7 +237,7 @@ int main()
    */
 	
    /// ********************************************************************* Quaternion ************************************************************************************************************************************************* //
-   /// Test Answer  [13, 15, 13, 7]
+   // Test Answer  [13, 15, 13, 7]
 	Quaternion v1(1, 2, 2, 3);
 	Quaternion v1Add(1, 2, 2, 3);
 	Quaternion v1Multiplication(1, 2, 2, 3);
@@ -245,63 +245,70 @@ int main()
 	Quaternion v2Copy(2, 1, 2, 5);
 	v1.print("[main()] v1 = ");
 	v2.print("[main()] v2 = ");
-	// +
+	/// +
 	v1Add.operator+(v2);
 	v1Add.print("[main()] Addition Quaternion test =\n");
-	// *
+	/// *
 	v1Multiplication.operator*(v2);
 	v1Multiplication.print("Multiply Quaternion test =\n");
-	// ||Q||
+	/// ||Q||
 	std::cout << std::endl;
 	Quaternion v3(1, 2, 2, 3);
 	float magnitudeQuaterntion_test = v3.magnitudeQuaternion(v3);
 	printf("[main()] Mag test v3 = %f\n", magnitudeQuaterntion_test);
-	// normalize
+	/// normalize
 	Quaternion normalizev3_test;
 	normalizev3_test.normalizeQuaternion(v3);
 	normalizev3_test.print("Normalize test v3 =");
-	// conjugate
+	/// conjugate
 	std::cout << std::endl;
 	Quaternion v3Conjugate(1, 2, 2, 3);
 	v3Conjugate.conjugateQuaternion(v3Conjugate);
 	v3Conjugate.print("[main()] Conjugate =");
 	std::cout << std::endl;
-	// inverse
-	/// Test Answer [-0.055556,-0.111111,-0.111111] (w = -0.166667)
+	/// inverse
+	// Test Answer [-0.055556,-0.111111,-0.111111] (w = -0.166667)
 	Quaternion inverseQuat(1, 2, 2, 3);
 	inverseQuat.inverseQuaternion(inverseQuat);
 	inverseQuat.print("[main()] InverseQuat = \n");
 	std::cout << std::endl;
-	// Rotate
+	/// Rotate
 	Quaternion rotateQuat;
 	float rotQuatf = 90;
 	Vector3 rotateQuatv3(1, 0, 0);
 	rotateQuat.rotateQuaternion(rotateQuatv3, rotQuatf);
 	/// multiply
-	Quaternion o1(1,2,3,4);
-	Quaternion o2(1,2,3,4);
-	o2.operator*(o1);
-	o2.print("o2 * o1 =");
-	//float doto1 = o1.dotQuaternion(o2);
-	//printf("o1 Dot o2 = %f\n", doto1);
-	//// Multiply Quaternion with Scalar Value
-	//Quaternion sV(2, 2, 2, 2);
-	//sV.operator*(2);
-	//sV.print("Scalar Value * Quaternion=");
-
+	/*
+		//Quaternion o1(1,2,3,4);
+		//Quaternion o2(1,2,3,4);
+		//o2.operator*(o1);
+		//o2.print("o2 * o1 =");
+		//float doto1 = o1.dotQuaternion(o2);
+		//printf("o1 Dot o2 = %f\n", doto1);
+		//// Multiply Quaternion with Scalar Value
+		//Quaternion sV(2, 2, 2, 2);
+		//sV.operator*(2);
+		//sV.print("Scalar Value * Quaternion=");
+	*/
 	std::cout <<std::endl;
 ///************************************************** Vector4 *****************************************************//
-	//Vector4 Vector4Test(7, 6, 5, 4);
-	//Vector3 Vector3Test(1, 2, 3);
-	//Vector4 Vector4CTest(Vector3Test);
-	//Vector4CTest.print("Vector3 into a Vector4 constructor");
-
+	/*
+		//Vector4 Vector4Test(7, 6, 5, 4);
+		//Vector3 Vector3Test(1, 2, 3);
+		//Vector4 Vector4CTest(Vector3Test);
+		//Vector4CTest.print("Vector3 into a Vector4 constructor");
+	*/
 	std::cout << std::endl;
 ///************************************************** Vector3 *****************************************************//
-	Vector3 scalarVecTest(2, 4, 6);
-	scalarVecTest.operator*(2);
-	scalarVecTest.print("scalarVecTest=");
-	
+	/*
+		// Vector3 scalarVecTest(2, 4, 6);
+		// scalarVecTest.operator*(2);
+		// scalarVecTest.print("scalarVecTest=");
+		// Vector3 Vector3MultiplyTest(2, 4, 6);
+		// Vector3 Vector3MultiplyTest2(2, 4, 6);
+		// Vector3MultiplyTest.operator*(Vector3MultiplyTest2);
+		// Vector3MultiplyTest.print("Vector3MultiplyTest =");
+	*/
 
 	
 
