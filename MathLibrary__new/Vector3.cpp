@@ -14,7 +14,7 @@ Vector3::~Vector3()
 void Vector3::printW(std::string note)
 {
 	std::cout << note;
-	//printf("(%f,%f,%f) (w = %f)\n", x, y, z, w);
+	printf("(%f,%f,%f) (w = %f)\n", x, y, z, w);
 }
 void Vector3::print(std::string note)
 {
@@ -100,6 +100,16 @@ Vector3& Vector3::operator*(const float scalar)
 	y = scalar * y;
 	z = scalar * z;
 
+	Vector3 ijk(x, y, z);
+	return ijk;
+
+}
+
+Vector3& Vector3::operator*(const Vector3& v)
+{
+	x = x * v.x;
+	y = y * v.y;
+	z = z * v.z;
 	Vector3 ijk(x, y, z);
 	return ijk;
 

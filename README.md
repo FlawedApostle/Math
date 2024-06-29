@@ -1,2 +1,0 @@
-#Math Library
-FlawedApostle ©

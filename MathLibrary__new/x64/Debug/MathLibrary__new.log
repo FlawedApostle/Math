@@ -1,1 +1,5 @@
-﻿
+﻿  MathLibrary__new.cpp
+E:\Documents\Humber Courses\GameMath\Math2\MathLib\MathLibrary__new\Vector.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+E:\Documents\Humber Courses\GameMath\Math2\MathLib\MathLibrary__new\Quat.h(25,13): warning C4305: 'initializing': truncation from 'double' to 'float'
+E:\Documents\Humber Courses\GameMath\Math2\MathLib\MathLibrary__new\Quat.h(26,39): warning C4305: 'initializing': truncation from 'double' to 'float'
+  MathLibrary__new.vcxproj -> E:\Documents\Humber Courses\GameMath\Math2\MathLib\x64\Debug\MathLibrary__new.exe

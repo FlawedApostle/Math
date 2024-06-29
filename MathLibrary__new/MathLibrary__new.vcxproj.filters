@@ -19,12 +19,12 @@
     <Filter Include="Source Files\Vector3">
       <UniqueIdentifier>{ea0c8149-49d8-45be-98d1-67b499f10099}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Vector4">
+      <UniqueIdentifier>{6d3cff42-2d8c-4335-8f53-dbfb58575807}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MathLibrary__new.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Vector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Quat.cpp">
@@ -32,6 +32,12 @@
     </ClCompile>
     <ClCompile Include="Vector3.cpp">
       <Filter>Source Files\Vector3</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector4.cpp">
+      <Filter>Source Files\Vector4</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -43,6 +49,9 @@
     </ClInclude>
     <ClInclude Include="Vector3.h">
       <Filter>Source Files\Vector3</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector4.h">
+      <Filter>Source Files\Vector4</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

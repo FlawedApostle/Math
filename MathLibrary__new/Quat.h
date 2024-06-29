@@ -2,6 +2,9 @@
 #include "math.h"
 #include "Vector.h"
 #include "Vector3.h"
+//#define PI 3.145926535;
+//#define RADIANStoDEGREES 3.145926535 / 180;
+
 class Vec3;
 class Vec4;
 class Vector3;
@@ -19,7 +22,8 @@ protected:
 	float y;
 	float z;
 	float w;
-
+	float pi = 3.141592653;
+	float RADIANStoDEGREES = 3.141592653 / 180;
 	// set variables
 	void const setQuaternion(float x_, float y_, float z_, float w_)
 	{
@@ -31,7 +35,6 @@ protected:
 
 	void const setQuaternionVec4(float x_, float y_, float z_, float w_)
 	{
-
 		vecQuat4.x = x_;
 		vecQuat4.y = y_;
 		vecQuat4.z = z_;
@@ -56,6 +59,7 @@ protected:
 	}
 
 public:
+
 	//Quaternion(const Quaternion&) {};
 	Quaternion()
 	{
@@ -71,6 +75,24 @@ public:
 		setQuaternionVec4(x_, y_, z_, w_);
 		setQuatVector3(x_, y_, z_, w_);
 	}
+	Quaternion(float W , Vector3 v) 
+	{
+		x = v.getVector3x();
+		y = v.getVector3y();
+		z = v.getVector3z();
+		w = W;
+		//v.setVector3w(w);
+	}
+	Quaternion(Quaternion& q)
+	{
+		x = q.x;
+		y = q.y;
+		z = q.z;
+		w = q.w;
+		setQuaternionVec3(q.x, q.y, q.z, q.w);
+		setQuaternionVec4(q.x, q.y, q.z, q.w);
+		setQuatVector3(q.x, q.y, q.z, q.w);
+	}
 	~Quaternion();
 	void print();
 	void print(std::string note);
@@ -79,11 +101,19 @@ public:
 	// overload the * operator to multiply two quaternions
 	Quaternion operator + (Quaternion Quat1);
 	Quaternion operator * (Quaternion Quat1);
+	Quaternion operator - (Quaternion Quat1);
+	// Square function , multiply the input Quaternion by itself
+	// operator =
+	Quaternion operator=(Quaternion& q);
+	// scalar multiplication
+	Quaternion operator*(float scalar);
 
-	Quaternion rotateQuaternion(Vec3 xyz, float w);
+	//Quaternion rotateQuaternion(Vec3 xyz, float w);
+	Vector3 rotateQuaternion(Vector3 q, float theta);
 	Quaternion normalizeQuaternion(Quaternion xyzw);
 	Quaternion conjugateQuaternion(Quaternion xyzw);
 	Quaternion inverseQuaternion(Quaternion xyzw);
+	float dotQuaternion(Quaternion xyzw);
 	float magnitudeQuaternion(Quaternion xyzw);
 
 
