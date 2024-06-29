@@ -35,7 +35,7 @@ public:
 		setVector3(x, y, z);
 	}
 
-	// Vec3 take a w coord, for D.O.F (Depth Of Field)
+	
 	Vector3(float x, float y, float z, float w)
 	{
 		setVector3(x, y, z , w);
@@ -45,7 +45,6 @@ public:
 	Vector3(Vector3& a)
 	{
 		setVector3(a.x, a.y, a.z);
-		// if user has inputed a w value for depth
 		if (w != NULL)
 		{
 			w = a.w;

@@ -278,8 +278,10 @@ int main()
 	Vector3 rotateQuatv3(1, 0, 0);
 	rotateQuat.rotateQuaternion(rotateQuatv3, rotQuatf);
 	/// multiply
-	//Quaternion o1(-3,4,1,2);
-	//Quaternion o2(2,3,1,-4);
+	Quaternion o1(1,2,3,4);
+	Quaternion o2(1,2,3,4);
+	o2.operator*(o1);
+	o2.print("o2 * o1 =");
 	//float doto1 = o1.dotQuaternion(o2);
 	//printf("o1 Dot o2 = %f\n", doto1);
 	//// Multiply Quaternion with Scalar Value

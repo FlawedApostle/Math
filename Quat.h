@@ -99,7 +99,7 @@ public:
 	Quaternion operator*(float scalar);
 
 	//Quaternion rotateQuaternion(Vec3 xyz, float w);
-	Vector3 rotateQuaternion(Vector3 axis, float rot);
+	Vector3 rotateQuaternion(Vector3 q, float theta);
 	Quaternion normalizeQuaternion(Quaternion xyzw);
 	Quaternion conjugateQuaternion(Quaternion xyzw);
 	Quaternion inverseQuaternion(Quaternion xyzw);
