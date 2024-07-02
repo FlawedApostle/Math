@@ -1,4 +1,4 @@
-// Samuel Fearnley n01047308 Math Lib Summer 2024
+// SpaceNomad Math Lib Summer 2024
 
 #include <iostream>
 #include "Vector.h"
