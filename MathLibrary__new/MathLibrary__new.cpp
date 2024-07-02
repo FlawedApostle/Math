@@ -68,7 +68,7 @@ int main()
 	std::cout << std::endl;
 
 
-	/// ****************************************************Samuel Fearnley n01047308 Math Lib Summer 2024 ********************************************************************************************************************************** //
+/// ********************************************************** Space Nomad Math Lib Summer 2024 ********************************************************************************************************************************** //
 ///															
 //                                                                              	 ^  
 //                                                                                  / \
@@ -247,28 +247,28 @@ int main()
 	v2.print("[main()] v2 = ");
 	std::cout << std::endl;
 	/// +
-	std::cout << "+" << std::endl;
+	std::cout << "Quaternion +" << std::endl;
 	v1Add.operator+(v2);
-	v1Add.print("[Quaternion] Addition test =");
+	v1Add.print("[Quaternion] operator+ test =");
 	std::cout << std::endl;
 	/// *
-	std::cout << "*" << std::endl;
+	std::cout << "Quaternion *" << std::endl;
 	v1Multiplication.operator*(v2);
-	v1Multiplication.print("[Quaternion] Multiply test  =");
+	v1Multiplication.print("Quaternion operator* test  =");
 	std::cout << std::endl;
 	/// = 
-	std::cout << "=" << std::endl;
+	std::cout << "Quaternion =" << std::endl;
 	Quaternion qEqual(1, 1, 1, 1);
 	Quaternion qEqualTwo(9, 8, 45, 25);
 	qEqual.operator=(qEqualTwo);
-	qEqual.print("[Quaternion] qEqual test =");
+	qEqual.print("Quaternion operator= test =");
 	std::cout << std::endl;
 	/// - 
-	std::cout << "-" << std::endl;
+	std::cout << "Quaternion -" << std::endl;
 	Quaternion qMinus(10,20,30,40);
 	Quaternion qMinusTwo(10, 10, 10,10);
 	qMinus.operator-(qMinusTwo);
-	qMinus.print("[Quaternion] qMinus test =");
+	qMinus.print("Quaternion operator- test =");
 	std::cout << std::endl;
 	/// ||Q||
 	std::cout << "Magnitude" << std::endl;
@@ -289,14 +289,14 @@ int main()
 	std::cout << std::endl;
 	std::cout << std::endl;
 	/// inverse
-	std::cout << "inverse" << std::endl;
+	std::cout << "Quaternion inverse" << std::endl;
 	// Test Answer [-0.055556,-0.111111,-0.111111] (w = -0.166667)
 	Quaternion inverseQuat(1, 2, 2, 3);
 	inverseQuat.inverseQuaternion(inverseQuat);
-	inverseQuat.print("[Quaternion] Inverse test = \n");
+	inverseQuat.print("Quaternion Inverse - test =");
 	std::cout << std::endl;
-	/// Rotate
-	std::cout << "Rotate" << std::endl;
+	/// quaternion Rotate
+	std::cout << "Quaternion Rotate" << std::endl;
 	// [1,0,0] w = 90
 	Vector3 vector3Rot(1, 0, 0);
 	Quaternion quatRot(0, 0, 1, 90);
@@ -305,25 +305,17 @@ int main()
 	//quatRot.rotateQuaternion(quatRot);
 	//quatRot.print("quatRot = ");
 	std::cout << std::endl;
-	// Vector4  =
-	std::cout << "operator=" << std::endl;
-	Vector4 change(1, 1, 1, 1);
-	change.print("change before change");
-	Vector4 changeto(2, 2, 2, 2);
-	change.operator=(changeto);
-	change.print("change changeto");
-	std::cout << std::endl;
-	// Quaternion multiply --> w is set to last
+	/// Quaternion multiply --> w is set to last
 	std::cout << "Quaternion multiply" << std::endl;
 	Quaternion q1(1, 2, 2, 3);
 	Quaternion q2(2, 1, 2, 5);
 	q1.operator*(q2);
-	q1.print("dot1 * dot2 =");
+	q1.print("Quaternion multiply - test");
 	std::cout << std::endl;
 	// quaternion Dot
 	std::cout << "Quaternion dot" << std::endl;
 	float dotQuaternion = q1.dotQuaternion(q2);
-	printf("dot1 Dot dot2 = %f\n", dotQuaternion);
+	printf("Quaternion dot - test = %f\n", dotQuaternion);
 	std::cout << std::endl;
 	/// Multiply Quaternion with Scalar Value
 	//Quaternion sV(2, 2, 2, 2);
@@ -388,7 +380,16 @@ int main()
 	 c1.crossVector4(c1 , c2);
 	 c1.print("Vector4Test - cross");
 	 std::cout << std::endl;
-///************************************************** Vector3 *****************************************************//
+
+	 // Vector4  =
+	 std::cout << "operator=" << std::endl;
+	 Vector4 change(1, 1, 1, 1);
+	 change.print("change before change");
+	 Vector4 changeto(2, 2, 2, 2);
+	 change.operator=(changeto);
+	 change.print("change changeto");
+	 std::cout << std::endl;
+///************************************************** new Vector3 *****************************************************//
 	/*
 		// Vector3 scalarVecTest(2, 4, 6);
 		// scalarVecTest.operator*(2);
