@@ -71,9 +71,11 @@ float Vector3::getVector3w()
 	return w;
 }
 
-Vector3& Vector3::operator=(const Vector3& v)
+Vector3& Vector3::operator=( Vector3& v)
 {
-	setVector3(v.x, v.y, v.z); return *this;
+	Vector3 sV(v.x, v.y, v.z);
+	//setVector3(v.x, v.y, v.z); 
+ return sV;
 }
 
 Vector3& Vector3::operator+(const Vector3& v)
@@ -96,11 +98,10 @@ Vector3& Vector3::operator-(const Vector3& v)
 
 Vector3& Vector3::operator*(const float scalar)
 {
-	x = scalar * x;
-	y = scalar * y;
-	z = scalar * z;
-
-	Vector3 ijk(x, y, z);
+	setVector3x(scalar * x);
+	setVector3y(scalar * y);
+	setVector3z(scalar * z);
+	Vector3 ijk(getVector3x(), getVector3y(), getVector3z());
 	return ijk;
 
 }
@@ -136,15 +137,17 @@ Vector3& Vector3::normalize(Vector3& a)
 
 Vector3& Vector3::crossProduct(Vector3& a, Vector3& b)
 {
-	//			i	-	j	  +		k
-	//			ax		ay			az
-	//			bx		by			bz
-	//			(ay*bz)-(az*by)i
-	//			(ax*bz)-(az*bx)j
-	//			(ax*by)-(ay*bx)k
-
+	/*	
+		//	working, tested July, 2024
+		//		i	-	j	  +		k
+		//		ax		ay			az
+		//		bx		by			bz
+		//		(ay*bz)-(az*by)i
+		//		(bx*az)-(ax*bz)j
+		//		(ax*by)-(ay*bx)k
+	*/
 	float i = (a.y*b.z)-(a.z*b.y);
-	float j = (a.x*b.z)-(a.z*b.x);
+	float j = (b.x*a.z)-(a.x*b.z);
 	float k = (a.x*b.y)-(a.y*b.x);
 	x = i;
 	y = j;

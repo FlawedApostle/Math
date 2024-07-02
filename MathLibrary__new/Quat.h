@@ -4,7 +4,17 @@
 #include "Vector3.h"
 //#define PI 3.145926535;
 //#define RADIANStoDEGREES 3.145926535 / 180;
+/*
+	So w is set to last in my Quaternion constructors. If I'm honest I'm tired of the whole
+	'Have to write it this way' ordeal. Lets be real, its imaginary numbers anyway ? so I mean 
+	whats the difference. The w is probably the only real number, but it gets treated as an imaginary
+	number sometimes. Its all relative ! so here..... 
+				I put the SCALAR VALUE w as the final output, not the first !
 
+										q = [w , v]
+									    ...Mine is...
+										q = [v , w]
+*/
 class Vec3;
 class Vec4;
 class Vector3;
@@ -17,14 +27,19 @@ protected:
 	Vec3 vecQuat3;
 	Vector3 vector3Quat;
 	Vector3 v3Q;
-	float rotQuat3;
+	//float rotQuat3;
 	float x;
 	float y;
 	float z;
 	float w;
-	float pi = 3.141592653;
-	float RADIANStoDEGREES = 3.141592653 / 180;
-	// set variables
+	float pi = 3.141592653589793238463;
+	/*	ALTHOUGH WE ARE DOING THE OPPOSITE (RAD TO DEG), 
+		RATHER, INSTEAD CONVERTING DEG TO RAD 
+		IN ORDER TO YEILD TO CORRECT RESULT.... 
+		FORMULA IS CORRECT, BUT NAME IS NOT
+	*/
+	float RADIANStoDEGREES = pi / 180;
+	// set variables --> yes I know I set w last, I will fix it.
 	void const setQuaternion(float x_, float y_, float z_, float w_)
 	{
 		x = x_ = 0;
@@ -99,17 +114,17 @@ public:
 	void printVector3(std::string note);
 
 	// overload the * operator to multiply two quaternions
-	Quaternion operator + (Quaternion Quat1);
-	Quaternion operator * (Quaternion Quat1);
-	Quaternion operator - (Quaternion Quat1);
-	// Square function , multiply the input Quaternion by itself
-	// operator =
-	Quaternion operator=(Quaternion& q);
+	Quaternion operator + (Quaternion q);
 	// scalar multiplication
-	Quaternion operator*(float scalar);
+	Quaternion operator*(float s);
+	Quaternion operator * (Quaternion q);
+	Quaternion operator - (Quaternion q);
+	Quaternion operator=(Quaternion& q);
+	// squared function ?
 
 	//Quaternion rotateQuaternion(Vec3 xyz, float w);
-	Vector3 rotateQuaternion(Vector3 q, float theta);
+	Vector3 rotateQuaternion(Vector3 v);
+	Quaternion rotateQuaternion(Quaternion q);
 	Quaternion normalizeQuaternion(Quaternion xyzw);
 	Quaternion conjugateQuaternion(Quaternion xyzw);
 	Quaternion inverseQuaternion(Quaternion xyzw);

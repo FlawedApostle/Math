@@ -45,10 +45,6 @@ public:
 	Vector3(Vector3& a)
 	{
 		setVector3(a.x, a.y, a.z);
-		if (w != NULL)
-		{
-			w = a.w;
-		}
 	}
 	~Vector3();
 	void printW(std::string note);
@@ -66,7 +62,7 @@ public:
 	float getVector3w();
 
 
-	Vector3& operator = (const Vector3& v);
+	Vector3& operator = ( Vector3& v);
 	Vector3& operator + (const Vector3& v);
 	Vector3& operator - (const Vector3& v);
 	Vector3& operator * (const float scalar);

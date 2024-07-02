@@ -14,7 +14,6 @@ protected:
 		y = y_;
 		z = z_;
 		w = w_;
-
 		return x, y, z, w;
 	}
 public:
@@ -30,6 +29,13 @@ public:
 		y = v.getVector3y();
 		z = v.getVector3z();
 		w = 0;
+	}
+	Vector4(Vector4& v)
+	{
+		x = v.setVector4x(x);
+		y = v.setVector4y(y);
+		z = v.setVector4z(z);
+		w = v.setVector4w(w);
 	}
 	~Vector4() {};
 	void print(std::string note)
@@ -48,6 +54,8 @@ public:
 		Vector4 vijk(x, y, z, w);
 		return  vijk;
 	}
+
+	// getters
 	float getVector4x()
 	{
 		return x;
@@ -83,6 +91,24 @@ public:
 		w = v; return w;
 	}
 
+
+	// operators
+	Vector4& addV4(Vector4& v, Vector4& b);
+	Vector4& operator+(Vector4& v);
+	Vector4& operator=(Vector4& v);
+	Vector4& operator-(Vector4& v);
+	Vector4& operator*(Vector4& v);
+	Vector4& operator*(float s);
+	// divide 
+	Vector4& operator/(Vector4& v);
+	Vector4& operator/(float s);
+
+
+
+	float const magVector4(Vector4& v) const;
+	Vector4& const normVector4(Vector4& v) const;
+	float dotVector4(Vector4& v, Vector4& b);
+	Vector4& crossVector4(Vector4& v, Vector4& b);
 
 
 };

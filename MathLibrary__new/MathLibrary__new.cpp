@@ -245,60 +245,149 @@ int main()
 	Quaternion v2Copy(2, 1, 2, 5);
 	v1.print("[main()] v1 = ");
 	v2.print("[main()] v2 = ");
-	/// +
-	v1Add.operator+(v2);
-	v1Add.print("[main()] Addition Quaternion test =\n");
-	/// *
-	v1Multiplication.operator*(v2);
-	v1Multiplication.print("Multiply Quaternion test =\n");
-	/// ||Q||
 	std::cout << std::endl;
+	/// +
+	std::cout << "+" << std::endl;
+	v1Add.operator+(v2);
+	v1Add.print("[Quaternion] Addition test =");
+	std::cout << std::endl;
+	/// *
+	std::cout << "*" << std::endl;
+	v1Multiplication.operator*(v2);
+	v1Multiplication.print("[Quaternion] Multiply test  =");
+	std::cout << std::endl;
+	/// = 
+	std::cout << "=" << std::endl;
+	Quaternion qEqual(1, 1, 1, 1);
+	Quaternion qEqualTwo(9, 8, 45, 25);
+	qEqual.operator=(qEqualTwo);
+	qEqual.print("[Quaternion] qEqual test =");
+	std::cout << std::endl;
+	/// - 
+	std::cout << "-" << std::endl;
+	Quaternion qMinus(10,20,30,40);
+	Quaternion qMinusTwo(10, 10, 10,10);
+	qMinus.operator-(qMinusTwo);
+	qMinus.print("[Quaternion] qMinus test =");
+	std::cout << std::endl;
+	/// ||Q||
+	std::cout << "Magnitude" << std::endl;
 	Quaternion v3(1, 2, 2, 3);
 	float magnitudeQuaterntion_test = v3.magnitudeQuaternion(v3);
-	printf("[main()] Mag test v3 = %f\n", magnitudeQuaterntion_test);
+	printf("[Quaternion] Magnitude test = %f\n", magnitudeQuaterntion_test);
 	/// normalize
+	std::cout << "normalize" << std::endl;
 	Quaternion normalizev3_test;
 	normalizev3_test.normalizeQuaternion(v3);
-	normalizev3_test.print("Normalize test v3 =");
-	/// conjugate
+	normalizev3_test.print("[Quaternion] Normalize test =");
 	std::cout << std::endl;
+	/// conjugate
+	std::cout << "Conjugate" << std::endl;
 	Quaternion v3Conjugate(1, 2, 2, 3);
 	v3Conjugate.conjugateQuaternion(v3Conjugate);
-	v3Conjugate.print("[main()] Conjugate =");
+	v3Conjugate.print("[Quaternion] Conjugate test =");
+	std::cout << std::endl;
 	std::cout << std::endl;
 	/// inverse
+	std::cout << "inverse" << std::endl;
 	// Test Answer [-0.055556,-0.111111,-0.111111] (w = -0.166667)
 	Quaternion inverseQuat(1, 2, 2, 3);
 	inverseQuat.inverseQuaternion(inverseQuat);
-	inverseQuat.print("[main()] InverseQuat = \n");
+	inverseQuat.print("[Quaternion] Inverse test = \n");
 	std::cout << std::endl;
 	/// Rotate
-	Quaternion rotateQuat;
-	float rotQuatf = 90;
-	Vector3 rotateQuatv3(1, 0, 0);
-	rotateQuat.rotateQuaternion(rotateQuatv3, rotQuatf);
-	/// multiply
-	/*
-		//Quaternion o1(1,2,3,4);
-		//Quaternion o2(1,2,3,4);
-		//o2.operator*(o1);
-		//o2.print("o2 * o1 =");
-		//float doto1 = o1.dotQuaternion(o2);
-		//printf("o1 Dot o2 = %f\n", doto1);
-		//// Multiply Quaternion with Scalar Value
-		//Quaternion sV(2, 2, 2, 2);
-		//sV.operator*(2);
+	std::cout << "Rotate" << std::endl;
+	// [1,0,0] w = 90
+	Vector3 vector3Rot(1, 0, 0);
+	Quaternion quatRot(0, 0, 1, 90);
+	//Quaternion quatRot(1, 0, 0, 30);
+	quatRot.rotateQuaternion(vector3Rot);
+	//quatRot.rotateQuaternion(quatRot);
+	//quatRot.print("quatRot = ");
+	std::cout << std::endl;
+	// Vector4  =
+	std::cout << "operator=" << std::endl;
+	Vector4 change(1, 1, 1, 1);
+	change.print("change before change");
+	Vector4 changeto(2, 2, 2, 2);
+	change.operator=(changeto);
+	change.print("change changeto");
+	std::cout << std::endl;
+	// Quaternion multiply --> w is set to last
+	std::cout << "Quaternion multiply" << std::endl;
+	Quaternion q1(1, 2, 2, 3);
+	Quaternion q2(2, 1, 2, 5);
+	q1.operator*(q2);
+	q1.print("dot1 * dot2 =");
+	std::cout << std::endl;
+	// quaternion Dot
+	std::cout << "Quaternion dot" << std::endl;
+	float dotQuaternion = q1.dotQuaternion(q2);
+	printf("dot1 Dot dot2 = %f\n", dotQuaternion);
+	std::cout << std::endl;
+	/// Multiply Quaternion with Scalar Value
+	//Quaternion sV(2, 2, 2, 2);
+	//sV.operator*(2);
 		//sV.print("Scalar Value * Quaternion=");
-	*/
-	std::cout <<std::endl;
-///************************************************** Vector4 *****************************************************//
+	
+	std::cout << std::endl;
+	/// 
+///************************************************** new - Vector4 *****************************************************//
 	/*
 		//Vector4 Vector4Test(7, 6, 5, 4);
 		//Vector3 Vector3Test(1, 2, 3);
 		//Vector4 Vector4CTest(Vector3Test);
 		//Vector4CTest.print("Vector3 into a Vector4 constructor");
 	*/
+	Vector4 Vector4Test(7, 6, 5, 4);	Vector4Test.print("Vector4Test");
+	Vector3 Vector3Test(1, 2, 3);		Vector3Test.print("Vector3Test");
+	Vector4 Vector3to4(Vector3Test);
+	Vector3to4.print("Vector3 into a Vector4 constructor");
+
+	// Vector4  - Add
+	printf("Vector4  - Add test\n");
+	Vector4Test.operator+(Vector3to4);
+	Vector4Test.print("Vector4Test +");
 	std::cout << std::endl;
+
+	// Vector4  - minus
+	printf("Vector4  - minus test\n");
+	Vector4Test.operator-(Vector3to4);
+	Vector4Test.print("Vector4Test -");
+	std::cout << std::endl;
+
+	// Vector4  - multiply			--> setting new var mul1
+	printf("Vector4  - multiply test\n");
+	Vector4 mul1(2, 2, 2, 2);
+	mul1.operator*(mul1);
+	mul1.print("Vector4Test multiply");
+	std::cout << std::endl;
+
+	// Vector4  - multiply scalar	--> using mul1 var
+	printf("Vector4  - multiply scalar test\n");
+	mul1.operator*(1);
+	mul1.print("Vector4Test multiply scalar");
+	std::cout << std::endl;
+
+	// Vector4  - dot
+	printf("Vector4  - Dot test\n");
+	float dotV4 =  Vector4Test.dotVector4(Vector4Test, Vector3to4);
+	printf("Vector4Test - dot = %f\n", dotV4);
+	std::cout << std::endl;
+
+	 // Vector4  - mag
+	 printf("Vector4  - mag test\n");
+	 float magV4 = Vector4Test.magVector4(Vector4Test);
+	 printf("Vector4Test - mag = %f\n", magV4);
+	 std::cout << std::endl;
+
+	 // Vector4  - cross
+	 printf("Vector4  - cross test\n");
+	 Vector4 c1(4, 2, 1, 5);
+	 Vector4 c2(2, 2, 1, 5);
+	 c1.crossVector4(c1 , c2);
+	 c1.print("Vector4Test - cross");
+	 std::cout << std::endl;
 ///************************************************** Vector3 *****************************************************//
 	/*
 		// Vector3 scalarVecTest(2, 4, 6);
@@ -309,9 +398,12 @@ int main()
 		// Vector3MultiplyTest.operator*(Vector3MultiplyTest2);
 		// Vector3MultiplyTest.print("Vector3MultiplyTest =");
 	*/
-
-	
-
+	 printf("Vector3  - cross test\n");
+	 Vector3 cv1(4, 2, 1);
+	 Vector3 cv2(2, 2, 1);
+	 cv1.crossProduct(cv1, cv2);
+	 cv1.print("Vector3 test - cross");
+	 std::cout << std::endl;
 
 
 	
