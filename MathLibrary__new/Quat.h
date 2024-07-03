@@ -39,7 +39,7 @@ protected:
 		FORMULA IS CORRECT, BUT NAME IS NOT
 	*/
 	float RADIANStoDEGREES = pi / 180;
-	// set variables --> yes I know I set w last, I will fix it.
+	// default set quaternion to 0 , I made the mistake of putting w last....
 	void const setQuaternion(float x_, float y_, float z_, float w_)
 	{
 		x = x_ = 0;
@@ -55,7 +55,7 @@ protected:
 		vecQuat4.z = z_;
 		vecQuat4.w = w_;		
 	}
-
+	// old vec3 class
 	void const setQuaternionVec3 (float x_, float y_, float z_, float w_)
 	{
 		vecQuat3.x = x_;
@@ -64,7 +64,7 @@ protected:
 		w = w_;
 	}
 
-	// Set Vector3 class xyzw
+	// Set new Vector3 class xyzw
 	void setQuatVector3(float x_, float y_, float z_, float w_)
 	{
 		vector3Quat.setVector3x(x);
@@ -121,6 +121,9 @@ public:
 	Quaternion operator - (Quaternion q);
 	Quaternion operator=(Quaternion& q);
 	// squared function ?
+	// scalar divide
+	Quaternion operator/(float s);
+	
 
 	//Quaternion rotateQuaternion(Vec3 xyz, float w);
 	Vector3 rotateQuaternion(Vector3 v);

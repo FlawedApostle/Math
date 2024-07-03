@@ -70,7 +70,7 @@ Quaternion Quaternion::operator*(Quaternion q)
 	float w1 = w;														 // printf("[function Quat operator*]w = %f\n", w1);
 	float w2 = q.w;												 // printf("[function Quat operator*]w = %f\n", w2);
 	Vector3 v1 = (vector3Quat.getVector3());							 // v1.print("[function Quat operator* , Vector3::GetVector3()] v1 = ");
-	Vector3 v2(q.x, q.y, q.z, q.w);	     // v2.print("[function Quat operator* , Vector3::GetVector3()] v2 = ");
+	//Vector3 v2(q.x, q.y, q.z, q.w);	     // v2.print("[function Quat operator* , Vector3::GetVector3()] v2 = ");
 	Quaternion q1(i,j,k,w);										 // q1.print("[function Quat operator* , v1 Quaternion = ");
 	Quaternion q2(q);											 // q2.print("[function Quat operator* , v2 Quaternion = ");
 
@@ -122,6 +122,19 @@ Quaternion Quaternion::operator=(Quaternion& q)
 	return ijkwz;
 }
 
+Quaternion Quaternion::operator/(float s)
+{
+	
+	x = x / s;
+	y = y / s;
+	z = z / s;
+	w = w / s;
+
+
+	Quaternion div(x,y,z,w);
+	return div;
+}
+
 
 
 Vector3 Quaternion::rotateQuaternion(Vector3 v)
@@ -164,7 +177,8 @@ Vector3 Quaternion::rotateQuaternion(Vector3 v)
 	Q_inverse.inverseQuaternion(Q);
 	Q_inverse.print("Q inversed=");
 
-	Q_start.operator*(Q);			Q_start.print("Q_start *");
+	Q_start.operator*(Q);			Q_start.print("Q_start * Q");
+	Q_start.operator*(Q_inverse);	Q_start.print("Q_start * inverse");
 	//Q_start.operator*(Q_inverse);	Q_start.print("Q_start inverse *");
 
 	//Quaternion result Q_start * Q * Q_inverse
@@ -312,7 +326,7 @@ Quaternion Quaternion::conjugateQuaternion(Quaternion xyzw)
 	float k = -K;	
 
 	float W = xyzw.w;
-	float w_ = -W;
+	float w_ = W;
 
 	x = i;			
 	y = j;			
@@ -320,7 +334,8 @@ Quaternion Quaternion::conjugateQuaternion(Quaternion xyzw)
 	w = w_;		
 
 	// w - xi - yj - zk
-	Quaternion ijk(i,j,k,w_);
+	//Quaternion ijk(i,j,k,w_);
+	Quaternion ijk(x,y,z,w);
 	return ijk;
 }
 

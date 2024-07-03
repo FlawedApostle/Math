@@ -29,7 +29,7 @@ void Vector3::print()
 
 Vector3& Vector3::getVector3()
 {
-	Vector3 ijk(getVector3x(), getVector3y(), getVector3z() , getVector3w());
+	Vector3 ijk(getVector3x(), getVector3y(), getVector3z());
 	return ijk;
 }
 float Vector3::setVector3x(float set)

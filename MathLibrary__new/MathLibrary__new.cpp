@@ -1,4 +1,4 @@
-// Space Nomad Math Lib Summer 2024
+// Samuel Fearnley n01047308 Math Lib Summer 2024
 
 #include <iostream>
 #include "Vector.h"
@@ -70,7 +70,7 @@ int main()
 
 /// ********************************************************** Space Nomad Math Lib Summer 2024 ********************************************************************************************************************************** //
 ///															
-//                                                                                   ^  
+//                                                                              	 ^  
 //                                                                                  / \
 //                                                                                 /   \
 //                                                                                /     \
@@ -270,7 +270,7 @@ int main()
 	qMinus.operator-(qMinusTwo);
 	qMinus.print("Quaternion operator- test =");
 	std::cout << std::endl;
-	/// ||Q||
+	/// ||mag||
 	std::cout << "Magnitude" << std::endl;
 	Quaternion v3(1, 2, 2, 3);
 	float magnitudeQuaterntion_test = v3.magnitudeQuaternion(v3);
@@ -295,6 +295,23 @@ int main()
 	inverseQuat.inverseQuaternion(inverseQuat);
 	inverseQuat.print("Quaternion Inverse - test =");
 	std::cout << std::endl;
+	/// Quaternion multiply --> w is set to last
+	std::cout << "Quaternion multiply" << std::endl;
+	Quaternion q1(1, 2, 2, 3);
+	Quaternion q2(2, 1, 2, 5);
+	q1.operator*(q2);
+	q1.print("Quaternion multiply - test");
+	std::cout << std::endl;
+	/// quaternion Dot
+	std::cout << "Quaternion dot" << std::endl;
+	float dotQuaternion = q1.dotQuaternion(q2);
+	printf("Quaternion dot - test = %f\n", dotQuaternion);
+	std::cout << std::endl;
+	/// Multiply Quaternion with Scalar Value
+	Quaternion sV(2, 2, 2, 2);
+	sV.operator*(2);
+	sV.print("Scalar Value * Quaternion=");
+	std::cout << std::endl;
 	/// quaternion Rotate
 	std::cout << "Quaternion Rotate" << std::endl;
 	// [1,0,0] w = 90
@@ -305,32 +322,9 @@ int main()
 	//quatRot.rotateQuaternion(quatRot);
 	//quatRot.print("quatRot = ");
 	std::cout << std::endl;
-	/// Quaternion multiply --> w is set to last
-	std::cout << "Quaternion multiply" << std::endl;
-	Quaternion q1(1, 2, 2, 3);
-	Quaternion q2(2, 1, 2, 5);
-	q1.operator*(q2);
-	q1.print("Quaternion multiply - test");
-	std::cout << std::endl;
-	// quaternion Dot
-	std::cout << "Quaternion dot" << std::endl;
-	float dotQuaternion = q1.dotQuaternion(q2);
-	printf("Quaternion dot - test = %f\n", dotQuaternion);
-	std::cout << std::endl;
-	/// Multiply Quaternion with Scalar Value
-	//Quaternion sV(2, 2, 2, 2);
-	//sV.operator*(2);
-		//sV.print("Scalar Value * Quaternion=");
-	
-	std::cout << std::endl;
-	/// 
+
 ///************************************************** new - Vector4 *****************************************************//
 	/*
-		//Vector4 Vector4Test(7, 6, 5, 4);
-		//Vector3 Vector3Test(1, 2, 3);
-		//Vector4 Vector4CTest(Vector3Test);
-		//Vector4CTest.print("Vector3 into a Vector4 constructor");
-	*/
 	Vector4 Vector4Test(7, 6, 5, 4);	Vector4Test.print("Vector4Test");
 	Vector3 Vector3Test(1, 2, 3);		Vector3Test.print("Vector3Test");
 	Vector4 Vector3to4(Vector3Test);
@@ -389,23 +383,17 @@ int main()
 	 change.operator=(changeto);
 	 change.print("change changeto");
 	 std::cout << std::endl;
+
+	 */
 ///************************************************** new Vector3 *****************************************************//
 	/*
-		// Vector3 scalarVecTest(2, 4, 6);
-		// scalarVecTest.operator*(2);
-		// scalarVecTest.print("scalarVecTest=");
-		// Vector3 Vector3MultiplyTest(2, 4, 6);
-		// Vector3 Vector3MultiplyTest2(2, 4, 6);
-		// Vector3MultiplyTest.operator*(Vector3MultiplyTest2);
-		// Vector3MultiplyTest.print("Vector3MultiplyTest =");
-	*/
 	 printf("Vector3  - cross test\n");
 	 Vector3 cv1(4, 2, 1);
 	 Vector3 cv2(2, 2, 1);
 	 cv1.crossProduct(cv1, cv2);
 	 cv1.print("Vector3 test - cross");
 	 std::cout << std::endl;
-
+	 */
 
 	
 

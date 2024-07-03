@@ -15,13 +15,13 @@ protected:
 		z = z_;
 	}
 	// Setting w value
-	void setVector3(float x_, float y_, float z_ ,float w_)
-	{
-		x = x_;
-		y = y_;
-		z = z_;
-		w = w_;
-	}
+	//void setVector3(float x_, float y_, float z_ ,float w_)
+	//{
+	//	x = x_;
+	//	y = y_;
+	//	z = z_;
+	//	w = w_;
+	//}
 
 public:
 
@@ -36,11 +36,11 @@ public:
 	}
 
 	
-	Vector3(float x, float y, float z, float w)
-	{
-		setVector3(x, y, z , w);
-		//setVector3w(w);
-	}
+	//Vector3(float x, float y, float z, float w)
+	//{
+	//	setVector3(x, y, z , w);
+	//	//setVector3w(w);
+	//}
 
 	Vector3(Vector3& a)
 	{
