@@ -8,20 +8,29 @@ class Vector4
 {
 protected:
 	float x, y, z, w;
-	float setVector4(float x_, float y_, float z_, float w_)
+	void setVector4(float x_, float y_, float z_, float w_)
 	{
 		x = x_;
 		y = y_;
 		z = z_;
 		w = w_;
-		return x, y, z, w;
 	}
 public:
 
-	Vector4() {};
+	Vector4() 
+	{
+		setVector4(1,1,1,1);
+	}
 	Vector4(float x_, float y_, float z_, float w_) 
 	{
 		setVector4(x_, y_, z_, w_);
+	}
+	Vector4(Vector3& v, float w_)
+	{
+		x = v.getVector3x();
+		y = v.getVector3y();
+		z = v.getVector3z();
+		w = w_;
 	}
 	Vector4(Vector3& v) 
 	{
@@ -37,6 +46,7 @@ public:
 		z = v.setVector4z(z);
 		w = v.setVector4w(w);
 	}
+
 	~Vector4() {};
 	void print(std::string note)
 	{

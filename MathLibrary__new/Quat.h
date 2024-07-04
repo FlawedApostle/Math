@@ -65,12 +65,11 @@ protected:
 	}
 
 	// Set new Vector3 class xyzw
-	void setQuatVector3(float x_, float y_, float z_, float w_)
+	void setQuaternionVector3(float x_, float y_, float z_)
 	{
 		vector3Quat.setVector3x(x);
 		vector3Quat.setVector3y(y);
 		vector3Quat.setVector3z(z);
-		vector3Quat.setVector3w(w);	
 	}
 
 public:
@@ -88,7 +87,18 @@ public:
 		w = w_;
 		setQuaternionVec3(x_, y_, z_, w_);
 		setQuaternionVec4(x_, y_, z_, w_);
-		setQuatVector3(x_, y_, z_, w_);
+		setQuaternionVector3(x_, y_, z_);						// new Vector3
+	}
+	Quaternion(Vector3& v)
+	{
+		 v.setVector3x(x);
+		 v.setVector3y(y);
+		 v.setVector3z(z);
+		/*
+			// Im not sure if to set this to zero when inputing a vector3 ,  
+			// as a pure quaternion(i.e a pure quaternion is when the scalar is set to zero)
+		*/
+		w = 0;
 	}
 	Quaternion(float W , Vector3 v) 
 	{
@@ -96,7 +106,6 @@ public:
 		y = v.getVector3y();
 		z = v.getVector3z();
 		w = W;
-		//v.setVector3w(w);
 	}
 	Quaternion(Quaternion& q)
 	{
@@ -106,9 +115,11 @@ public:
 		w = q.w;
 		setQuaternionVec3(q.x, q.y, q.z, q.w);
 		setQuaternionVec4(q.x, q.y, q.z, q.w);
-		setQuatVector3(q.x, q.y, q.z, q.w);
+		setQuaternionVector3(q.x, q.y, q.z);					// new Vector3
 	}
+	
 	~Quaternion();
+	
 	void print();
 	void print(std::string note);
 	void printVector3(std::string note);
@@ -142,15 +153,18 @@ public:
 		Quaternion Quaternion(x, y, z, w);
 		return Quaternion;
 	}
+	// old Vec4 
 	Vec4 getQuaternionVec4()
 	{
 		return vecQuat4;
 	}
+	// old Vec3 
 	Vec3 getQuaternionVec3()
 	{
 		//vecQuat3 = Vec3(vecQuat3.x, vecQuat3.y, vecQuat3.z);
 		return vecQuat3;
 	}
+	// new Vector3
 	Vector3 getQuaternionVector3()
 	{
 		return vector3Quat.getVector3();

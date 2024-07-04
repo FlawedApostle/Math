@@ -14,7 +14,7 @@ Vector3::~Vector3()
 void Vector3::printW(std::string note)
 {
 	std::cout << note;
-	printf("(%f,%f,%f) (w = %f)\n", x, y, z, w);
+	printf("(%f,%f,%f)\n", x, y, z);
 }
 void Vector3::print(std::string note)
 {
@@ -32,6 +32,8 @@ Vector3& Vector3::getVector3()
 	Vector3 ijk(getVector3x(), getVector3y(), getVector3z());
 	return ijk;
 }
+
+// setters
 float Vector3::setVector3x(float set)
 {
 	x = set;
@@ -47,12 +49,7 @@ float Vector3::setVector3z(float set)
 	z = set;
 	return z;
 }
-float Vector3::setVector3w(float set)
-{
-	w = set;
-	return w;
-}
-
+// getters
 float Vector3::getVector3x()
 {
 	return x;
@@ -65,11 +62,6 @@ float Vector3::getVector3z()
 {
 	return z;
 }
-// Depth Of Field Coord
-float Vector3::getVector3w()
-{
-	return w;
-}
 
 Vector3& Vector3::operator=( Vector3& v)
 {
@@ -78,6 +70,14 @@ Vector3& Vector3::operator=( Vector3& v)
  return sV;
 }
 
+Vector3& Vector3::operator+(const float s)
+{
+	x = x + s;
+	y = y + s;
+	z = z + s;
+	Vector3 ijk(x,y,z);
+	return ijk;
+}
 Vector3& Vector3::operator+(const Vector3& v)
 {
 	x = v.x + x;
@@ -105,7 +105,6 @@ Vector3& Vector3::operator*(const float scalar)
 	return ijk;
 
 }
-
 Vector3& Vector3::operator*(const Vector3& v)
 {
 	x = x * v.x;

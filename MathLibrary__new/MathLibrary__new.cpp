@@ -274,18 +274,18 @@ int main()
 	std::cout << "Magnitude" << std::endl;
 	Quaternion v3(1, 2, 2, 3);
 	float magnitudeQuaterntion_test = v3.magnitudeQuaternion(v3);
-	printf("[Quaternion] Magnitude test = %f\n", magnitudeQuaterntion_test);
+	printf("Quaternion Magnitude test = %f\n", magnitudeQuaterntion_test);
 	/// normalize
 	std::cout << "normalize" << std::endl;
 	Quaternion normalizev3_test;
 	normalizev3_test.normalizeQuaternion(v3);
-	normalizev3_test.print("[Quaternion] Normalize test =");
+	normalizev3_test.print("Quaternion Normalize test =");
 	std::cout << std::endl;
 	/// conjugate
 	std::cout << "Conjugate" << std::endl;
 	Quaternion v3Conjugate(1, 2, 2, 3);
 	v3Conjugate.conjugateQuaternion(v3Conjugate);
-	v3Conjugate.print("[Quaternion] Conjugate test =");
+	v3Conjugate.print("Quaternion Conjugate test =");
 	std::cout << std::endl;
 	std::cout << std::endl;
 	/// inverse

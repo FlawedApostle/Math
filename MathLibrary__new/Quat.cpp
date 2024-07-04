@@ -16,7 +16,7 @@ void Quaternion::print(std::string note)
 void Quaternion::printVector3(std::string note)
 {
 	 std::cout << note;
-	 printf("[Quaternion::PrintVector3] Vector3 = (%f,%f,%f) (w=%f)\n", vector3Quat.getVector3x(), vector3Quat.getVector3y(), vector3Quat.getVector3z(), vector3Quat.getVector3w());
+	 printf("[Quaternion::PrintVector3] Vector3 = (%f,%f,%f)\n", vector3Quat.getVector3x(), vector3Quat.getVector3y(), vector3Quat.getVector3z());
 
 }
 
