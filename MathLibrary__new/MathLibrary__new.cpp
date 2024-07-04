@@ -295,7 +295,7 @@ int main()
 	inverseQuat.inverseQuaternion(inverseQuat);
 	inverseQuat.print("Quaternion Inverse - test =");
 	std::cout << std::endl;
-	/// Quaternion multiply --> w is set to last
+	/// Quaternion multiply --> w is set to last	// 13,15,13,7
 	std::cout << "Quaternion multiply" << std::endl;
 	Quaternion q1(1, 2, 2, 3);
 	Quaternion q2(2, 1, 2, 5);
@@ -322,6 +322,24 @@ int main()
 	//quatRot.rotateQuaternion(quatRot);
 	//quatRot.print("quatRot = ");
 	std::cout << std::endl;
+	/// quaterion vector3 -print test
+	/*
+	std::cout << "quaterion vector3" << std::endl;
+	Quaternion vector3test(10, 10, 10, 10);
+	vector3test.getQuaternionVector3();
+	vector3test.printVector3("vector3test");
+	std::cout << std::endl;
+	*/
+	/// quaternion , Vector3 to pure Quaternion
+	/*
+	std::cout << "vector3 to pure quaterion" << std::endl;
+	Vector3 vector3toQuat(2, 2, 2);
+	vector3toQuat.print("vector3toQuat");
+	Quaternion vector3test;
+	vector3test.vector3ToQuaterion(vector3toQuat);
+	vector3test.print("vector3test to pure quaternion");
+	std::cout << std::endl;
+	*/
 
 ///************************************************** new - Vector4 *****************************************************//
 	/*

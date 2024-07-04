@@ -23,10 +23,9 @@ class Quaternion
 {
 private:
 protected:
-	Vec4 vecQuat4;
-	Vec3 vecQuat3;
-	Vector3 vector3Quat;
-	Vector3 v3Q;
+	Vec4 vecQuat4;				// old vec4
+	Vec3 vecQuat3;				// old vec3
+	Vector3 vector3Quat;		// new vector3 class
 	//float rotQuat3;
 	float x;
 	float y;
@@ -74,7 +73,6 @@ protected:
 
 public:
 
-	//Quaternion(const Quaternion&) {};
 	Quaternion()
 	{
 		setQuaternion(x, y, z, w);
@@ -145,7 +143,8 @@ public:
 	float dotQuaternion(Quaternion xyzw);
 	float magnitudeQuaternion(Quaternion xyzw);
 
-
+	// Vector3 to pure quaternion
+	Quaternion vector3ToQuaterion(Vector3& v);
 
 	/// Getters
 	Quaternion getQuaternion()
@@ -168,6 +167,5 @@ public:
 	Vector3 getQuaternionVector3()
 	{
 		return vector3Quat.getVector3();
-		/*std::cout << vector3Quat.getVector3();*/
 	}
 };

@@ -16,7 +16,7 @@ void Quaternion::print(std::string note)
 void Quaternion::printVector3(std::string note)
 {
 	 std::cout << note;
-	 printf("[Quaternion::PrintVector3] Vector3 = (%f,%f,%f)\n", vector3Quat.getVector3x(), vector3Quat.getVector3y(), vector3Quat.getVector3z());
+	 printf(" [Quaternion::PrintVector3] Vector3 = (%f,%f,%f)\n", vector3Quat.getVector3x(), vector3Quat.getVector3y(), vector3Quat.getVector3z());
 
 }
 
@@ -49,13 +49,13 @@ Quaternion Quaternion::operator+(Quaternion q)
 
 Quaternion Quaternion::operator*(float s)
 {
-	Vector3 qs(x, y, z);
+	//Vector3 qs(x, y, z);
 	x = x * s;
 	y = y * s;
 	z = z * s;
 	w = w * s;
 	Quaternion ijkw(x, y, z, w);
-	ijkw.operator=(ijkw);
+	//ijkw.operator=(ijkw);
 	//Quaternion ijkw(w = w * s, x = qs.getVector3x() * s, y = qs.getVector3y() * s, z = qs.getVector3z() * s);
 	//ijkw.operator=(ijkw);
 	return ijkw;
@@ -69,12 +69,93 @@ Quaternion Quaternion::operator*(Quaternion q)
 	float k = z;
 	float w1 = w;														 // printf("[function Quat operator*]w = %f\n", w1);
 	float w2 = q.w;												 // printf("[function Quat operator*]w = %f\n", w2);
-	Vector3 v1 = (vector3Quat.getVector3());							 // v1.print("[function Quat operator* , Vector3::GetVector3()] v1 = ");
+	//Vector3 v1 = (vector3Quat.getVector3());							 // v1.print("[function Quat operator* , Vector3::GetVector3()] v1 = ");
 	//Vector3 v2(q.x, q.y, q.z, q.w);	     // v2.print("[function Quat operator* , Vector3::GetVector3()] v2 = ");
 	Quaternion q1(i,j,k,w);										 // q1.print("[function Quat operator* , v1 Quaternion = ");
 	Quaternion q2(q);											 // q2.print("[function Quat operator* , v2 Quaternion = ");
 
-	/// Formula
+	/// Formula 2
+	/*
+		 q1 = <a,b,c,d>  && q2 = <e,f,g,h>
+		 <a,b,c,d> * <e,f,g,h>
+			i,j,k		i,j,k
+
+		ae + af(i) + ag(j) + ah(k)
+		be(i) + bf(i^2) + bg(ij) + bh(ik)		// i
+		ce(j) + cf(ji) + cg(j^2) + ch(jk)		// j
+		de(k) + df(ki) + dh(kj) + dh(k^2)		// k
+	
+		ijk = -1	
+		i^2 = -1	ij = k		ji = -k
+		j^2 = -1	jk = i		kj = -i
+		k^2 = -1	ki = j		ik = -j
+
+		solve for 
+		ii	= -1
+		kk	= -1
+		jj	= -1
+
+		ji	= -k		ij = k
+		jk	= i			kj = -i
+		ki	= j			ik = -j
+		
+
+		bg(ij)	 -> iijk = -1	=  i^2jk = -1i	=	-jk = -i	-> jk = i
+		jk = i	 -> jjk = i		=	j^2k = ji	=	-k = ji		
+		// ji = -k	-> ij = k
+		-k = jii ->	-ki = j^2	=	-ki = -j	=	ki = j
+		// ki = j	-> ik = -j
+		kki = j  -> k^2i = kj	=	-i = kj
+		//  kj = -i	-> jk = i
+		
+			i			j			k
+		i	-1			k			-j
+
+		j	-k			-1			i	
+
+		k	j			-i			-1
+
+
+		 ae + af(i) + ag(j) + ah(k)	+
+		 be(i) + bf + bg(k) - bh(j)	+
+		 ce(j) - cf(k) + cg + ch(i)	+
+		 de(k) + df(j) - dg(i) + dh	+
+
+		 // Set i , j , k in column format
+		 w ->	ae , bf , cg , dh
+		 i ->	af, be , ch , - dg
+		 j ->	ag , - bh , ce , df
+		 k ->	ah , bg , -cf , de
+
+		 a = w1
+		 e = w2
+
+		 ae - bf - cg - dh 
+		 af + be + ch - dg ,
+		 ag - bh + ce + df ,
+		 ah + bg - cf + de
+
+		 <b ,c ,d> =	 <f, g, h> = 
+		 (x1,y1,z1)		 (x2,y2,z2)
+		  i, j, k		  i, j, k
+		 
+		 /// final form
+		 w1*w2 - x1*x2 - y1*y2 - z1*z2	// w
+		 w1*x2 + x1*w2 + y1*z2 - z1*y2	// i
+		 w1*y2 - x1*z2 + y1*w2 + z1*x2	// j
+		 w1*z2 + x1*y2 - y1*x2 + z1*w2	// k
+
+		 q1*q2 = w1*w2 - v1 . v2 + w1*v2 + w2*v1 + v1 X v2  
+
+	*/
+
+	/// Working July 2024
+	w = w1 * w2 - q1.x * q2.x - q1.y * q2.y - q1.z * q2.z;
+	x = w1 * q2.x + q1.x * w2 + q1.y * q2.z - q1.z * q2.y;
+	y = w1 * q2.y - q1.x * q2.z + q1.y * w2 + q1.z * q2.x;
+	z = w1 * q2.z + q1.x * q2.y - q1.y * q2.x + q1.z * w2;
+
+	/// Formula 1
 	/*
 		* w1*w2 - v1 . v2 + w1v2 + w2v1 + v1 X v2
 		* v1 = [x1,y1,z1] v2 = [x2,y2,z2]
@@ -84,10 +165,10 @@ Quaternion Quaternion::operator*(Quaternion q)
 		* w1*z2 + z1*w2 + x1*y2 - y1*x2		// k 
 	*/
 	//float i, j, k;
-	w = w1*w2 - q1.x * q2.x - q1.y * q2.y - q1.z * q2.z;				// w
-	x = (w1 * q2.x) + (q1.x * w2) + (q1.y * q2.z) - (q1.z * q2.y);		// i	
-	y = (w1 * q2.y) + (q1.y * w2) + (q1.z * q2.x) - (q1.x * q2.z);		// j	
-	z = (w1 * q2.z) + (q1.z * w2) + (q1.x * q2.y) - (q1.y * q2.x);		// k
+	//w = w1*w2 - q1.x * q2.x - q1.y * q2.y - q1.z * q2.z;				// w
+	//x = (w1 * q2.x) + (q1.x * w2) + (q1.y * q2.z) - (q1.z * q2.y);		// i	
+	//y = (w1 * q2.y) + (q1.y * w2) + (q1.z * q2.x) - (q1.x * q2.z);		// j	
+	//z = (w1 * q2.z) + (q1.z * w2) + (q1.x * q2.y) - (q1.y * q2.x);		// k
 	/// Test Answer = 13, 15, 13, 7
 	Quaternion ijkw(x,y,z,w);
 	////ijkw.print("ijkw =");
@@ -145,6 +226,12 @@ Vector3 Quaternion::rotateQuaternion(Vector3 v)
 		//  First create a quaternion that represents a rotation of 90 degrees about the z axis
 		//  Then rotate the vector [1, 0, 0] by this quaternion
 		//  Your result should be [0 , 1, 0]
+
+		cos(theta / 2) + sin(theta / 2) * x , sin(theta / 2) * y , sin(theta / 2) * z 
+				w		[		x			,		y			 ,		z			]
+
+											(v) = qvq*
+									pure quaternion * vector * conjugate quaternion
 	*/
 
 	/* To rotate a Quaternion :
@@ -168,6 +255,31 @@ Vector3 Quaternion::rotateQuaternion(Vector3 v)
 	float j = y;
 	float k = z;
 	float W = w;
+
+	float I = x;
+	float J = y;
+	float K = z;
+	float W_ = w;
+
+	v.print("original v vector3");
+	Quaternion original_quaternion(I, J, K, W_);
+	original_quaternion.print("original_quaternion");
+
+	Quaternion pure_quaternion;
+	pure_quaternion.vector3ToQuaterion(v);
+	pure_quaternion.print("pure_quaterion");
+
+	Quaternion conjugate_quaternion(i,j,k,W);
+	conjugate_quaternion.conjugateQuaternion(conjugate_quaternion);
+	conjugate_quaternion.print("conjugate_quaterion");
+	
+	pure_quaternion.operator*(original_quaternion); // * conjugate_quaterion;
+	pure_quaternion.print("result1");
+ 
+
+
+	
+	/*
 	Quaternion Q_start(i, j, k, W);
 	Q_start.print("Q start=");
 
@@ -182,7 +294,7 @@ Vector3 Quaternion::rotateQuaternion(Vector3 v)
 	//Q_start.operator*(Q_inverse);	Q_start.print("Q_start inverse *");
 
 	//Quaternion result Q_start * Q * Q_inverse
-
+	*/
 
 	Vector3 vv;
 
@@ -414,6 +526,17 @@ float Quaternion::magnitudeQuaternion(Quaternion xyzw)
 	float ijkz = i + j + k + W;
 	float ijkMag = sqrt(ijkz);
 	return ijkMag;
+}
+
+// set input Vector3 to pure quaternion
+Quaternion Quaternion::vector3ToQuaterion(Vector3& v)
+{
+	x = v.getVector3x();
+	y = v.getVector3y();
+	z = v.getVector3z();
+	w = 0;
+	Quaternion ijkw(x,y,z,w);
+	return ijkw;
 }
 
 
