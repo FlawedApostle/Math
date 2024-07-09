@@ -316,10 +316,13 @@ int main()
 	std::cout << "Quaternion Rotate" << std::endl;
 	// [1,0,0] w = 90
 	Vector3 vector3Rot(1, 0, 0);
+	//Vector3 vector3Rot(0.149, -0.149, 0.149);								// TEST
 	Quaternion quatRot(0, 0, 1, 90);
-	//Quaternion quatRot(1, 0, 0, 30);
-	quatRot.rotateQuaternion(vector3Rot);
+	//Quaternion quatRot(1, 0, 0, 30);										// AN = [.9659 , (.2588 , 0 , 0)]
+	//Quaternion quatRot(0.149, -0.149, 0.149, .9659);						// AN = [.9659 , (.2588 , 0 , 0)]
 	//quatRot.rotateQuaternion(quatRot);
+	//quatRot.print("quatRot = ");
+	quatRot.rotateQuaternion(vector3Rot);
 	//quatRot.print("quatRot = ");
 	std::cout << std::endl;
 	/// quaterion vector3 -print test

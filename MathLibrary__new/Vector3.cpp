@@ -66,7 +66,7 @@ float Vector3::getVector3z()
 
 Vector3& Vector3::operator=( Vector3& v)
 {
-	Vector3 sV(v.x, v.y, v.z);
+	Vector3 sV(x = v.x, y = v.y, z = v.z);
 	//setVector3(v.x, v.y, v.z); 
  return sV;
 }

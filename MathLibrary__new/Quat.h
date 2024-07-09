@@ -37,7 +37,10 @@ protected:
 		IN ORDER TO YEILD TO CORRECT RESULT.... 
 		FORMULA IS CORRECT, BUT NAME IS NOT
 	*/
-	float RADIANStoDEGREES = pi / 180;
+	float DEGREEtoRADIAN = pi / 180;
+	float RADIANtoDEGREE = 180 / pi;
+	float ZERO = 0.0f;
+	float CLOSE_TO_ZERO = 0.01f;
 	// default set quaternion to 0 , I made the mistake of putting w last....
 	void const setQuaternion(float x_, float y_, float z_, float w_)
 	{
