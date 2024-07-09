@@ -343,15 +343,12 @@ Vector3 Quaternion::rotateQuaternion(Vector3 v)
 	printf("angleResult =%f\n", angleResult);
 
 
-	x = i / angleResult;
-	y = j / angleResult;
-	z = k / angleResult;
-	w = w;
 	*/
+
+
 	/// Test 5
 	// formula = cos(theta) + (v)sin(theta)
 	// v vector3 [x,y,z]
-
 	///	Data
 	float angletoDeg;
 	float angletoRad;
@@ -371,9 +368,10 @@ Vector3 Quaternion::rotateQuaternion(Vector3 v)
 	Vector3 ijk(i,j,k);
 	ijk.print("ijk");
 
+	/// Convert Axis Angle to Quaternion
 	/// normalize the vector
-	ijk.normalize(ijk);
-	ijk.print("ijk normalized");
+	//ijk.normalize(ijk);
+	//ijk.print("ijk normalized");
 	/// Angle set
 	/*
 		* if 90 , if 0 -> set vector3 to [1,0,0]
@@ -387,7 +385,6 @@ Vector3 Quaternion::rotateQuaternion(Vector3 v)
 	} 
 	
 	/// sin(theta) && cos(theta)
-	//angleCosDeg = cos(angle_copy2 * RADIANtoDEGREE / 2);
 	angleCosDeg = cos(angle_copy1 / 2);
 	angleSinDeg = sin(angle_copy1 / 2) ;
 	if (angleCosDeg < form.CLOSE_TO_ZERO)
@@ -396,28 +393,38 @@ Vector3 Quaternion::rotateQuaternion(Vector3 v)
 	}
 	printf("angle to cosDeg = %f\nangle to sinDeg = %f\n", angleCosDeg,angleSinDeg);
 
-	// scalar multiply vector by sin(theta / 2)
+	/// scalar multiply vector by sin(theta / 2)
 	Vector3 ijkMultiplied = ijk.operator*(angleSinDeg);
 	ijkMultiplied.print("ijk multiplied by angleSinDeg");
- 
-
-	// multiply rotation component
+	/// multiply scalar component
 	float angle_theta = w;
 	float angle_rotation = angle_theta * angleCosDeg;
- 
 	printf("angle_rotation = %f\n", angle_rotation);
+	/// Final Quaternion Axis Angle
+	Quaternion quaternionAxisAngleToQuaternion(angle_rotation, ijk);
+	quaternionAxisAngleToQuaternion.print("quaternion Axis Angle To Quaternion");
 
-	Quaternion quaternionToAxisAngle(angle_rotation, ijk);
-	quaternionToAxisAngle.print("quaternionToAxisAngle");
+	/// Convert Quaternion to Axis Angle
+	/*
+		* Extract the angle	(2 times inverse cos equals extracted rotation angle)	
+		*								(2)acos(theta)
+		* divide quaternion objects			
+		*				x / sin(theta/2), y / sin(theta/2), z / sin(theta/2)
+	*/
 
+	/// Data
+	float angle_extractDeg = angleCosDeg  ;
+	printf("angle_extractDeg = %f\n", angle_extractDeg);
 
+	float angle_extracted_inverse = acos(angle_extractDeg) * 2 * form.RADIANtoDEGREE;
+	printf("angle_extracted_inverse  = %f\n", angle_extracted_inverse);
 
 
 	Vector3 result(x,y,z);
 	result.operator=(ijkMultiplied);
 	//ijk.operator=(ijkMultiplied);
 	
-	printf("w= %f ", w);
+	printf("w= %f ", angle_rotation);
 	ijk.print("Final Vector Rotation =");
 	/*
 	Quaternion Q_start(i, j, k, W);
