@@ -18,6 +18,7 @@
 class Vec3;
 class Vec4;
 class Vector3;
+struct formula;
 
 class Quaternion
 {
@@ -26,21 +27,25 @@ protected:
 	Vec4 vecQuat4;				// old vec4
 	Vec3 vecQuat3;				// old vec3
 	Vector3 vector3Quat;		// new vector3 class
-	//float rotQuat3;
+	
 	float x;
 	float y;
 	float z;
 	float w;
-	float pi = 3.141592653589793238463;
-	/*	ALTHOUGH WE ARE DOING THE OPPOSITE (RAD TO DEG), 
-		RATHER, INSTEAD CONVERTING DEG TO RAD 
-		IN ORDER TO YEILD TO CORRECT RESULT.... 
-		FORMULA IS CORRECT, BUT NAME IS NOT
-	*/
-	float DEGREEtoRADIAN = pi / 180;
-	float RADIANtoDEGREE = 180 / pi;
-	float ZERO = 0.0f;
-	float CLOSE_TO_ZERO = 0.01f;
+	
+	// Struct the formulas
+	struct formula		
+	{
+		float pi = 3.141592653589793238463;
+		float DEGREEtoRADIAN = pi / 180;
+		float RADIANtoDEGREE = 180 / pi;
+		float ZERO = 0.0f;
+		float CLOSE_TO_ZERO = 0.01f;
+		float angle90pi = pi / 2;
+	};
+	formula form;
+
+
 	// default set quaternion to 0 , I made the mistake of putting w last....
 	void const setQuaternion(float x_, float y_, float z_, float w_)
 	{
@@ -139,7 +144,9 @@ public:
 
 	//Quaternion rotateQuaternion(Vec3 xyz, float w);
 	Vector3 rotateQuaternion(Vector3 v);
+	Quaternion rotateQuaternion_t2(Vector3 v);
 	Quaternion rotateQuaternion(Quaternion q);
+	
 	Quaternion normalizeQuaternion(Quaternion xyzw);
 	Quaternion conjugateQuaternion(Quaternion xyzw);
 	Quaternion inverseQuaternion(Quaternion xyzw);

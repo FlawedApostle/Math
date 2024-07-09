@@ -352,23 +352,7 @@ Vector3 Quaternion::rotateQuaternion(Vector3 v)
 	// formula = cos(theta) + (v)sin(theta)
 	// v vector3 [x,y,z]
 
-	float i = v.getVector3x();
-	float j = v.getVector3y();
-	float k = v.getVector3z();
-	float W = w;
-	Vector3 ijk(i,j,k);
-	ijk.print("ijk");
-	/*
-		// if The angle is 90 Deg set to pi / 2
-		// Why?, because its the only way I can print the correct number
-	*/
-	float angle_copy1 = w;		
-	float angle_copy2 = w;		
-	if (w = 90.0f) { 
-		angle_copy1 = pi / 2; 
-		angle_copy2 = pi / 2; 
-	} 
-	printf("intial angle w  = %f\n", W);
+	///	Data
 	float angletoDeg;
 	float angletoRad;
 	float angleResult;
@@ -379,41 +363,62 @@ Vector3 Quaternion::rotateQuaternion(Vector3 v)
 	float angleSinDeg;
 	float angleCosDeg;
 
-	
-	// normalize the vector
-	ijk.normalize(ijk);
-	ijk.print("normalized ijk");
- 
+	float i = v.getVector3x();
+	float j = v.getVector3y();
+	float k = v.getVector3z();
+	float W = w;						printf("intial angle w  = %f\n", W);
+	/// Load vector3
+	Vector3 ijk(i,j,k);
+	ijk.print("ijk");
 
+	/// normalize the vector
+	ijk.normalize(ijk);
+	ijk.print("ijk normalized");
+	/// Angle set
+	/*
+		* if 90 , if 0 -> set vector3 to [1,0,0]
+		* if The angle is 90 Deg set to pi / 2
+		* Why?, because its the only way I can print the correct number
+	*/
+	float angle_copy1 = w;				
+	if (w == 90.0f) { 
+		angle_copy1 = form.angle90pi;			// pi/2
+		printf("angle set is 90. Setting 90 Deg to pi/2\nnewAngle in radians = %f\n", angle_copy1);
+	} 
+	
 	/// sin(theta) && cos(theta)
-	angleCosDeg = cos(angle_copy2 * RADIANtoDEGREE / 2);
-	angleSinDeg = sin(angle_copy1 / 2);
-	if (angleCosDeg < CLOSE_TO_ZERO)
+	//angleCosDeg = cos(angle_copy2 * RADIANtoDEGREE / 2);
+	angleCosDeg = cos(angle_copy1 / 2);
+	angleSinDeg = sin(angle_copy1 / 2) ;
+	if (angleCosDeg < form.CLOSE_TO_ZERO)
 	{
-		angleCosDeg = ZERO;
+		angleCosDeg = form.ZERO;
 	}
-	printf("angle to cosDeg = %f\n", angleCosDeg);
-	printf("angle to sinDeg = %f\n", angleSinDeg);
+	printf("angle to cosDeg = %f\nangle to sinDeg = %f\n", angleCosDeg,angleSinDeg);
 
 	// scalar multiply vector by sin(theta / 2)
 	Vector3 ijkMultiplied = ijk.operator*(angleSinDeg);
 	ijkMultiplied.print("ijk multiplied by angleSinDeg");
-	//ijk.print("ijk multiplied by angleSinDeg");
+ 
 
-	// add the vectors ?
-	ijkMultiplied.operator+(angleCosDeg);
-	ijkMultiplied.print("ijk Added angleCosDeg");
+	// multiply rotation component
+	float angle_theta = w;
+	float angle_rotation = angle_theta * angleCosDeg;
+ 
+	printf("angle_rotation = %f\n", angle_rotation);
 
-	ijkMultiplied.normalize(ijkMultiplied);
-	ijkMultiplied.print("ijkMultiplied Normalized");
+	Quaternion quaternionToAxisAngle(angle_rotation, ijk);
+	quaternionToAxisAngle.print("quaternionToAxisAngle");
 
 
 
-	Vector3 result(x , y  , z );
-	ijk.operator=(ijkMultiplied);
+
+	Vector3 result(x,y,z);
+	result.operator=(ijkMultiplied);
+	//ijk.operator=(ijkMultiplied);
 	
+	printf("w= %f ", w);
 	ijk.print("Final Vector Rotation =");
-	printf("w= %f\n", w);
 	/*
 	Quaternion Q_start(i, j, k, W);
 	Q_start.print("Q start=");
@@ -436,6 +441,12 @@ Vector3 Quaternion::rotateQuaternion(Vector3 v)
 
 	
 }
+
+//Quaternion Quaternion::rotateQuaternion_t2(Vector3 v)
+//{
+//
+//	return Quaternion();
+//}
 
 
 Quaternion Quaternion::rotateQuaternion(Quaternion q)
@@ -469,7 +480,7 @@ Quaternion Quaternion::rotateQuaternion(Quaternion q)
 	//newQuat.print("newQuat=");
 
 	// conv Deg to rad -> 2(pi)/360 || conv Rad to Deg -> (180/pi)
-	float theta = w *  DEGREEtoRADIAN;
+	float theta = w *  form.DEGREEtoRADIAN;
 	//printf("theta iN radians = %f\n", theta);
 	float ctheta = cos(theta /2) ;
 	//printf("cos(theta)=%f\n", ctheta);
