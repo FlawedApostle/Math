@@ -226,10 +226,10 @@ Quaternion Quaternion::operator/(float s)
 }
 
 
-// !!!
+// working July 2024
 Vector3 Quaternion::rotateQuaternion(Vector3 v)
 {
-	// Function Requirments
+	// Function Req
 	/*
 		//  Testing Vec3 Rotate(Vec3 vec)
 		//  First create a quaternion that represents a rotation of 90 degrees about the z axis	-> 90,1,0,0
@@ -277,16 +277,11 @@ Vector3 Quaternion::rotateQuaternion(Vector3 v)
 	Quaternion ResultNorm = Result.normalizeQuaternion(Result);
 	ResultNorm.print("Result......");
 
-	// now it works !! July 2024
-	//Quaternion qq = quaternionUnit * quaternionVector;
-	//qq.print("qq multiplication TEST");
-
 	 // quaternion * unit quaternion * quaternionInverse
 
 	Vector3 resultV(x,y,z);
 	//resultV.operator=(quaternion);
 	//ijk.operator=(ijkMultiplied);
-	
 	//resultV.print("Final Vector Rotation =");
 	//printf("w= %f\n", angle);
 
@@ -295,7 +290,6 @@ Vector3 Quaternion::rotateQuaternion(Vector3 v)
 
 	
 }
-
 
 Quaternion Quaternion::rotateQuaternion(Quaternion q)
 {
