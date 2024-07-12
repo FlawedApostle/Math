@@ -302,16 +302,27 @@ int main()
 	q1.operator*(q2);
 	q1.print("Quaternion multiply - test");
 	std::cout << std::endl;
-	/// quaternion Dot
+	/// quaternion Dot	// [7, 13,15,13]
 	std::cout << "Quaternion dot" << std::endl;
 	float dotQuaternion = q1.dotQuaternion(q2);
-	printf("Quaternion dot - test = %f\n", dotQuaternion);
+	printf("Quaternion dot - test 1 = %f\n", dotQuaternion);
 	std::cout << std::endl;
+
+	/// quaternion mag * mag dot product
+	std::cout << "Quaternion dot function 2 - test" << std::endl;
+	Quaternion dotProduct1(1, 2, 2, 7);
+	Quaternion dotProduct2(2, 1, 2, 5);
+	float dotTest2 = dotProduct1.dotQuaternion(dotProduct2);
+	printf("dotTest2=%f\n", dotTest2);
+	std::cout << std::endl;
+
 	/// Multiply Quaternion with Scalar Value
 	Quaternion sV(2, 2, 2, 2);
 	sV.operator*(2);
 	sV.print("Scalar Value * Quaternion=");
 	std::cout << std::endl;
+
+
 	/// quaternion Rotate
 	std::cout << "Quaternion Rotate" << std::endl;
 	// [1,0,0] w = 90

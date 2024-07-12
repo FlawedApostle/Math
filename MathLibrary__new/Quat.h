@@ -101,24 +101,23 @@ public:
  
 	Quaternion(float x_, float y_, float z_, float w_)
 	{
-		x = x_;
-		y = y_;
-		z = z_;
-		w = w_;
-		setQuaternionVec3(x_, y_, z_, w_);
-		setQuaternionVec4(x_, y_, z_, w_);
+		setQuaternion(x_, y_, z_, w_);
 		setQuaternionVector3(x_, y_, z_);						// new Vector3
+
+		//setQuaternionVec3(x_, y_, z_, w_);
+		//setQuaternionVec4(x_, y_, z_, w_);
+	}
+	Quaternion(const Quaternion& q)
+	{
+		setQuaternion(q.x, q.y, q.z, q.w);
+		setQuaternionVector3(q.x, q.y, q.z);					// new Vector3
 	}
 	Quaternion(Vector3& v)
 	{
 		 v.setVector3x(x);
 		 v.setVector3y(y);
 		 v.setVector3z(z);
-		/*
-			// Im not sure if to set this to zero when inputing a vector3 ,  
-			// as a pure quaternion(i.e a pure quaternion is when the scalar is set to zero)
-		*/
-		w = 0;
+		 w = 0;
 	}
 	Quaternion(float W , Vector3 v) 
 	{
@@ -127,16 +126,6 @@ public:
 		z = v.getVector3z();
 		w = W;
 	}
-	Quaternion(Quaternion& q)
-	{
-		x = q.x;
-		y = q.y;
-		z = q.z;
-		w = q.w;
-		setQuaternionVec3(q.x, q.y, q.z, q.w);
-		setQuaternionVec4(q.x, q.y, q.z, q.w);
-		setQuaternionVector3(q.x, q.y, q.z);					// new Vector3
-	}
 	
 	~Quaternion();
 	
@@ -144,13 +133,13 @@ public:
 	void print(std::string note);
 	void printVector3(std::string note);
 
-	// overload the * operator to multiply two quaternions
 	Quaternion operator + (Quaternion q);
 	// scalar multiplication
 	Quaternion operator*(float s);
-	Quaternion operator * (Quaternion q);
-	Quaternion operator * (Vector3& v);
-	Quaternion operator *= (Quaternion q);
+	Quaternion operator * (const Quaternion q);
+	//Quaternion operator*(const Quaternion& q) const;
+	/// Multiply Quaternion by Vector3 || Vector4
+	//Quaternion operator * (Vector3& v);
 	Quaternion operator - (Quaternion q);
 	Quaternion operator=(Quaternion& q);
 	// scalar divide
@@ -166,6 +155,7 @@ public:
 	Quaternion conjugateQuaternion(Quaternion xyzw);
 	Quaternion inverseQuaternion(Quaternion xyzw);
 	float dotQuaternion(Quaternion xyzw);
+	float dotQuaternion(float dotv , float maga , float magb);
 	float magnitudeQuaternion(Quaternion xyzw);
 
 	// Vector3 to pure quaternion
