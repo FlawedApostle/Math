@@ -5,7 +5,7 @@
 
 void Quaternion::print()
 {
-	printf("(%f,%f,%f,%f)\n", x, y, z, w);
+	printf("[%f,(%f,%f,%f)]\n", w ,x, y, z);
 
 }
 void Quaternion::print(std::string note)
@@ -57,6 +57,7 @@ Quaternion Quaternion::operator*(float s)
 	Quaternion ijkw(x, y, z, w);
 	return ijkw;
 }
+
 
 Quaternion Quaternion::operator*(Quaternion q)
 {
@@ -183,6 +184,141 @@ Quaternion Quaternion::operator*(Quaternion q)
 
 }
 
+// not done..
+Quaternion Quaternion::operator*(Vector3& v)
+{
+	/// Data
+	Quaternion q(x,y,z,w);
+	float i = x;
+	float j = y;
+	float k = z;
+	float w1 = w;
+	float w2 = q.w;
+	//Vector3 v1 = (vector3Quat.getVector3());					 
+	//Vector3 v2(q.x, q.y, q.z, q.w);							 
+	Quaternion q1(i, j, k, w);
+	Quaternion q2(q);
+	/*
+	//				Debugging, Checking, Printing input
+	// printf("[function Quat operator*]w = %f\n", w1);
+	// printf("[function Quat operator*]w = %f\n", w2);
+	// v1.print("[function Quat operator* , Vector3::GetVector3()] v1 = ");
+	// v2.print("[function Quat operator* , Vector3::GetVector3()] v2 = ");
+	// q1.print("[function Quat operator* , v1 Quaternion = ");
+	// q2.print("[function Quat operator* , v2 Quaternion = ");
+	*/
+
+
+	/// Formula 2
+	/*
+		 q1 = <a,b,c,d>  && q2 = <e,f,g,h>
+		 <a,b,c,d> * <e,f,g,h>
+			i,j,k		i,j,k
+
+		ae + af(i) + ag(j) + ah(k)
+		be(i) + bf(i^2) + bg(ij) + bh(ik)		// i
+		ce(j) + cf(ji) + cg(j^2) + ch(jk)		// j
+		de(k) + df(ki) + dh(kj) + dh(k^2)		// k
+
+		ijk = -1
+		i^2 = -1	ij = k		ji = -k
+		j^2 = -1	jk = i		kj = -i
+		k^2 = -1	ki = j		ik = -j
+
+		solve for
+		ii	= -1
+		kk	= -1
+		jj	= -1
+
+		ji	= -k		ij = k
+		jk	= i			kj = -i
+		ki	= j			ik = -j
+
+
+		bg(ij)	 -> iijk = -1	=  i^2jk = -1i	=	-jk = -i	-> jk = i
+		jk = i	 -> jjk = i		=	j^2k = ji	=	-k = ji
+		// ji = -k	-> ij = k
+		-k = jii ->	-ki = j^2	=	-ki = -j	=	ki = j
+		// ki = j	-> ik = -j
+		kki = j  -> k^2i = kj	=	-i = kj
+		//  kj = -i	-> jk = i
+
+			i			j			k
+		i	-1			k			-j
+
+		j	-k			-1			i
+
+		k	j			-i			-1
+
+
+		 ae + af(i) + ag(j) + ah(k)	+
+		 be(i) + bf + bg(k) - bh(j)	+
+		 ce(j) - cf(k) + cg + ch(i)	+
+		 de(k) + df(j) - dg(i) + dh	+
+
+		 // Set i , j , k in column format
+		 w ->	ae , bf , cg , dh
+		 i ->	af, be , ch , - dg
+		 j ->	ag , - bh , ce , df
+		 k ->	ah , bg , -cf , de
+
+		 a = w1
+		 e = w2
+
+		 ae - bf - cg - dh
+		 af + be + ch - dg ,
+		 ag - bh + ce + df ,
+		 ah + bg - cf + de
+
+		 <b ,c ,d> =	 <f, g, h> =
+		 (x1,y1,z1)		 (x2,y2,z2)
+		  i, j, k		  i, j, k
+
+		 /// final form
+		 w1*w2 - x1*x2 - y1*y2 - z1*z2	// w
+		 w1*x2 + x1*w2 + y1*z2 - z1*y2	// i
+		 w1*y2 - x1*z2 + y1*w2 + z1*x2	// j
+		 w1*z2 + x1*y2 - y1*x2 + z1*w2	// k
+
+		 q1*q2 = w1*w2 - v1 . v2 + w1*v2 + w2*v1 + v1 X v2
+
+	*/
+
+	/// Working July 2024
+	w = w1 * w2 - q1.x * q2.x - q1.y * q2.y - q1.z * q2.z;
+	x = w1 * q2.x + q1.x * w2 + q1.y * q2.z - q1.z * q2.y;
+	y = w1 * q2.y - q1.x * q2.z + q1.y * w2 + q1.z * q2.x;
+	z = w1 * q2.z + q1.x * q2.y - q1.y * q2.x + q1.z * w2;
+
+	/// Formula 1
+	/*
+		* w1*w2 - v1 . v2 + w1v2 + w2v1 + v1 X v2
+		* v1 = [x1,y1,z1] v2 = [x2,y2,z2]
+		* w1*w2 - x1*x2 - y1*y2 - z1*z2		// w
+		* w1*x2 + x1*w2 + y1*z2 - z1*y2		// i
+		* w1*y2 + y1*w2 + z1*x2 - x1*z20	// j
+		* w1*z2 + z1*w2 + x1*y2 - y1*x2		// k
+	*/
+	//float i, j, k;
+	//w = w1*w2 - q1.x * q2.x - q1.y * q2.y - q1.z * q2.z;				// w
+	//x = (w1 * q2.x) + (q1.x * w2) + (q1.y * q2.z) - (q1.z * q2.y);		// i	
+	//y = (w1 * q2.y) + (q1.y * w2) + (q1.z * q2.x) - (q1.x * q2.z);		// j	
+	//z = (w1 * q2.z) + (q1.z * w2) + (q1.x * q2.y) - (q1.y * q2.x);		// k
+	/// Test Answer = 13, 15, 13, 7
+	Quaternion ijkw(x, y, z, w);
+	////ijkw.print("ijkw =");
+	return ijkw;
+}
+
+// !!!
+Quaternion Quaternion::operator*=(Quaternion q)
+{
+	//Quaternion qq(x, y, z, w);
+	//q * qq * *this;
+	//q.operator*(qq);
+	return *this;
+}
+
 Quaternion Quaternion::operator-(Quaternion q)
 {
 	// [w1 - w2 , x1 - x2 , y1 - y2 , z1 - z2 - w1 - w2]
@@ -227,7 +363,7 @@ Quaternion Quaternion::operator/(float s)
 // !!!
 Vector3 Quaternion::rotateQuaternion(Vector3 v)
 {
-	/// Function Requirments !
+	// Function Requirments
 	/*
 		//  Testing Vec3 Rotate(Vec3 vec)
 		//  First create a quaternion that represents a rotation of 90 degrees about the z axis	-> 90,1,0,0
@@ -240,8 +376,6 @@ Vector3 Quaternion::rotateQuaternion(Vector3 v)
 											(v) = qvq*
 									pure quaternion * vector * conjugate quaternion
 	*/
-
-	/// Test 1
 	/* To rotate a Quaternion :
 		// Set Incoming Quaternion Q, and turn into a new Vector3 Quaternion -> (w , Vector3)
 		// Set Incoming Quaternion to inverse (-w , -v)
@@ -257,203 +391,36 @@ Vector3 Quaternion::rotateQuaternion(Vector3 v)
 		//	 sin0		cos0	0
 		//		0		0		1
 	*/	
-	/// Test 2
-	/*
-		//float angle = w;
-		//float i = x;
-		//float j = y;
-		//float k = z;
-		//float W = w;
 
-		//float I = x;
-		//float J = y;
-		//float K = z;
-		//float W_ = w;
-
-		//v.print("original v vector3");
-		//Quaternion original_quaternion(I, J, K, W_);
-		//original_quaternion.print("original_quaternion");
-
-		//Quaternion pure_quaternion;
-		//pure_quaternion.vector3ToQuaterion(v);
-		//pure_quaternion.print("pure_quaterion");
-
-		//Quaternion conjugate_quaternion(i,j,k,W);
-		//conjugate_quaternion.conjugateQuaternion(conjugate_quaternion);
-		//conjugate_quaternion.print("conjugate_quaterion");
-		//
-		//pure_quaternion.operator*(original_quaternion); // * conjugate_quaterion;
-		//pure_quaternion.print("result1");
-	*/
-	/// Test 3
-	/// Formula Notes
-	/*
-	// extract the angle
-	// angle = cos(theta / 2)
-	// acos(angle)
-	// convert angle from radian to degree
-	// (angle / 2) == (angle * 2) = theta result
-	*/
-	/// Test 4
-	/// cos(w / 2) , [1,0,0] * sin(90/2)
-	/*
-	float i = v.getVector3x();
-	float j = v.getVector3y();
-	float k = v.getVector3z();
-	float W = w;
+	/// Test 9
 	float angle = w;
-	float angletoDeg;
-	float angleAcos;
-	float angleNew;
-	float angleNewtoDeg;
-	float angleResult;
-	float angleResulttoDeg;
-	float angleResulttoRad;
-	printf("angle=%f\n", angle);
-	Vector3 ijk(i, j, k);
-	ijk.print("unit vector3 = ");
+	float I, j, k , W;
+	Quaternion quaternionUnit(x,y,z,0);
+	Quaternion quaternionVector(v.getVector3x() , v.getVector3y() , v.getVector3z() , w);
+	quaternionUnit.print(); quaternionVector.print();
 
-
-
-	angleAcos = acos(angle);
-
-	printf("acos(angle)=%f\n", angleAcos);
-	
-	angletoDeg = angleAcos * RADIANtoDEGREE;
-	printf("angle * (180 / 3.145926)=%f\n", angletoDeg);
-
-	angleNew = angletoDeg * 2;
-	printf("(angle * 2)=%f\n", angleNew);
-
-	// Extracted angle , apply to unit vector
-	// v = sin(theta / 2)n
-	// n = sin(theta / 2)
-	// [x , y , z] = sin(theta / 2)n
-	// [x , y , z] = n
-	// [x , y , z] / n = n
-	// 
-
-
-	// convert back to radian
-	angleResulttoRad = angleNew * DEGREEtoRADIAN;
-	printf("angleResulttoDegree =%f\n", angleResulttoRad);
-	
-	// angle does not require transform to degree. yeilds correct answer in Degrees
-	angleResult  = sin(angleResulttoRad);
-	printf("angleResult =%f\n", angleResult);
-
-
-	*/
-
-
-	/// Test 5
-	// formula = cos(theta) + (v)sin(theta)
-	// v vector3 [x,y,z]
-	///	Data
-	float angletoDeg;
-	float angletoRad;
-	float angleResult;
+	printf("angle=%f ", angle );
 	float angleCos = w;
-	float angleCosRad;
+	angleCos = cos(angle / 2);
+	angleCos = angleCos * formula.RADIANtoDEGREE;
 	float angleSin = w;
-	float angleSinRad;
-	float angleSinDeg;
-	float angleCosDeg;
+	angleSin = sin(angle/2);
+	printf("angle cos=%f , sin=%f\n", angleCos , angleSin);
 
-	float i = v.getVector3x();
-	float j = v.getVector3y();
-	float k = v.getVector3z();
-	float W = w;						printf("intial angle w  = %f\n", W);
-	/// Load vector3
-	Vector3 ijk(i,j,k);
-	ijk.print("ijk");
+	// quaternion * unit quaternion * quaternionInverse
 
-	/// Convert Axis Angle to Quaternion
-	/// normalize the vector
-	//ijk.normalize(ijk);
-	//ijk.print("ijk normalized");
-	/// Angle set
-	/*
-		* if 90 , if 0 -> set vector3 to [1,0,0]
-		* if The angle is 90 Deg set to pi / 2
-		* Why?, because its the only way I can print the correct number
-	*/
-	float angle_copy1 = w;				
-	if (w == 90.0f) { 
-		angle_copy1 = form.angle90pi;			// pi/2
-		printf("angle set is 90. Setting 90 Deg to pi/2\nnewAngle in radians = %f\n", angle_copy1);
-	} 
-	
-	/// sin(theta) && cos(theta)
-	angleCosDeg = cos(angle_copy1 / 2);
-	angleSinDeg = sin(angle_copy1 / 2) ;
-	if (angleCosDeg < form.CLOSE_TO_ZERO)
-	{
-		angleCosDeg = form.ZERO;
-	}
-	printf("angle to cosDeg = %f\nangle to sinDeg = %f\n", angleCosDeg,angleSinDeg);
-
-	/// scalar multiply vector by sin(theta / 2)
-	Vector3 ijkMultiplied = ijk.operator*(angleSinDeg);
-	ijkMultiplied.print("ijk multiplied by angleSinDeg");
-	/// multiply scalar component
-	float angle_theta = w;
-	float angle_rotation = angle_theta * angleCosDeg;
-	printf("angle_rotation = %f\n", angle_rotation);
-	/// Final Quaternion Axis Angle
-	Quaternion quaternionAxisAngleToQuaternion(angle_rotation, ijk);
-	quaternionAxisAngleToQuaternion.print("quaternion Axis Angle To Quaternion");
-
-	/// Convert Quaternion to Axis Angle
-	/*
-		* Extract the angle	(2 times inverse cos equals extracted rotation angle)	
-		*								(2)acos(theta)
-		* divide quaternion objects			
-		*				x / sin(theta/2), y / sin(theta/2), z / sin(theta/2)
-	*/
-
-	/// Data
-	float angle_extractDeg = angleCosDeg  ;
-	printf("angle_extractDeg = %f\n", angle_extractDeg);
-
-	float angle_extracted_inverse = acos(angle_extractDeg) * 2 * form.RADIANtoDEGREE;
-	printf("angle_extracted_inverse  = %f\n", angle_extracted_inverse);
-
-
-	Vector3 result(x,y,z);
-	result.operator=(ijkMultiplied);
+	Vector3 resultV(x,y,z);
+	//resultV.operator=(quaternion);
 	//ijk.operator=(ijkMultiplied);
 	
-	printf("w= %f ", angle_rotation);
-	ijk.print("Final Vector Rotation =");
-	/*
-	Quaternion Q_start(i, j, k, W);
-	Q_start.print("Q start=");
-
-	Quaternion Q(v.getVector3x(), v.getVector3y(), v.getVector3z() , 0.0f);
-	Q.print("Q Vector3=");
-	Quaternion Q_inverse; 
-	Q_inverse.inverseQuaternion(Q);
-	Q_inverse.print("Q inversed=");
-
-	Q_start.operator*(Q);			Q_start.print("Q_start * Q");
-	Q_start.operator*(Q_inverse);	Q_start.print("Q_start * inverse");
-	//Q_start.operator*(Q_inverse);	Q_start.print("Q_start inverse *");
-
-	//Quaternion result Q_start * Q * Q_inverse
-	*/
+	resultV.print("Final Vector Rotation =");
+	//printf("w= %f\n", angle);
 
 
-	return result;
+	return resultV;
 
 	
 }
-
-//Quaternion Quaternion::rotateQuaternion_t2(Vector3 v)
-//{
-//
-//	return Quaternion();
-//}
 
 
 Quaternion Quaternion::rotateQuaternion(Quaternion q)
@@ -483,11 +450,13 @@ Quaternion Quaternion::rotateQuaternion(Quaternion q)
 
 	// q = (s , v) = s(costheta / 2) , v(sintheta / 2)
 	// nope !
-	Quaternion newQuat(vecQuat3.x, vecQuat3.y, vecQuat3.z, w);
+	//Quaternion newQuat(vecQuat3.x, vecQuat3.y, vecQuat3.z, w);
 	//newQuat.print("newQuat=");
 
+	Quaternion newQuat(vector3Quat.getVector3());
+
 	// conv Deg to rad -> 2(pi)/360 || conv Rad to Deg -> (180/pi)
-	float theta = w *  form.DEGREEtoRADIAN;
+	float theta = w * formula.DEGREEtoRADIAN;
 	//printf("theta iN radians = %f\n", theta);
 	float ctheta = cos(theta /2) ;
 	//printf("cos(theta)=%f\n", ctheta);
@@ -496,9 +465,14 @@ Quaternion Quaternion::rotateQuaternion(Quaternion q)
 
 	Quaternion rotatedQuat
 	(
-		x = newQuat.x * stheta, 
-		y = newQuat.y * stheta, 
-		z = newQuat.z * ctheta, 
+		/*
+		//x = newQuat.x * stheta, 
+		//y = newQuat.y * stheta, 
+		//z = newQuat.z * ctheta, 
+		*/
+		x = vector3Quat.getVector3x() * stheta,
+		y = vector3Quat.getVector3y() * stheta,
+		z = vector3Quat.getVector3z() * ctheta,
 		w = ctheta
 	);
 
@@ -508,23 +482,28 @@ Quaternion Quaternion::rotateQuaternion(Quaternion q)
 
 Quaternion Quaternion::normalizeQuaternion(Quaternion xyzw)
 {
+	/*	
+		// Old Code
 	float W = pow(xyzw.w, 2);
 	float i = pow(xyzw.x, 2);
 	float j = pow(xyzw.y, 2);
 	float k = pow(xyzw.z, 2);
-
 	x = i;
 	y = j;
 	z = k;
 	w = W;
-	
 	float ijkz =  i+j+k+W;
 	float ikjw = sqrt(ijkz);
-
 	w = xyzw.w / ikjw;
 	x = xyzw.x / ikjw;
 	y = xyzw.y / ikjw;
 	z = xyzw.z / ikjw;
+	*/
+	float xyzwMag = xyzw.magnitudeQuaternion(xyzw);
+	w = w / xyzwMag;
+	x = x / xyzwMag;
+	y = y / xyzwMag;
+	z = z / xyzwMag;
 
 	//  Test Answer (0.235702, 0.471405, 0.471405, 0.707107)
 	Quaternion ikjww(x ,y ,z ,w);
@@ -541,25 +520,54 @@ Quaternion Quaternion::conjugateQuaternion(Quaternion xyzw)
 		* conjugate formula					w - xi - yj - zk
 	
 	*/
-	float I = xyzw.x;
-	float i = -I;	
-	
-	float J = xyzw.y;
-	float j = -J;	
+	float I, J, K,W;
+	float i, j, k, w_;
 
-	float K = xyzw.z;
-	float k = -K;	
+	I = xyzw.x;
+	j = xyzw.y;
+	K = xyzw.z;
 
-	float W = xyzw.w;
-	float w_ = W;
-
-	x = i;			
-	y = j;			
-	z = k;			
-	w = w_;		
-
-	// w - xi - yj - zk
-	//Quaternion ijk(i,j,k,w_);
+	// I
+	I = xyzw.x;
+	if (xyzw.x == 0)
+	{
+		I = 0;
+		i = I;
+	}
+	else
+	{
+		i = -I;
+	}
+	// J
+	J = xyzw.y;
+	if (xyzw.y == 0)
+	{
+		J = 0;
+		j = J;
+	}
+	else
+	{
+		j = -J;
+	}
+	// K
+	K = xyzw.z;
+	if (xyzw.z == 0)
+	{
+		K = 0;
+		k = K;
+	}
+	else
+	{
+		k = -K;
+	}
+	// w = untouched....
+	W = xyzw.w;
+	w_ = W;
+	// Final
+	x = i;
+	y = j;
+	z = k;
+	w = w_;
 	Quaternion ijk(x,y,z,w);
 	return ijk;
 }

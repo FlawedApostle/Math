@@ -34,7 +34,7 @@ protected:
 	float w;
 	
 	// Struct the formulas
-	struct formula		
+	struct Formula		
 	{
 		float pi = 3.141592653589793238463;
 		float DEGREEtoRADIAN = pi / 180;
@@ -43,16 +43,30 @@ protected:
 		float CLOSE_TO_ZERO = 0.01f;
 		float angle90pi = pi / 2;
 	};
-	formula form;
+	Formula formula;
 
-
+	void const setDefaultQuaternion()
+	{
+		x = 0;
+		y = 0;
+		z = 0;
+		w = 1;
+	}
 	// default set quaternion to 0 , I made the mistake of putting w last....
 	void const setQuaternion(float x_, float y_, float z_, float w_)
 	{
-		x = x_ = 0;
-		y = y_ = 0;
-		z = z_ = 0;
-		w = w_ = 1;
+		x = x_;
+		y = y_;
+		z = z_;
+		w = w_;
+	}
+	// set with Vector3
+	void const setQuaternion(float w_ , Vector3& v)
+	{
+		x = v.getVector3x();
+		y = v.getVector3y();
+		z = v.getVector3z();
+		w = w_;
 	}
 
 	void const setQuaternionVec4(float x_, float y_, float z_, float w_)
@@ -80,11 +94,11 @@ protected:
 	}
 
 public:
-
 	Quaternion()
 	{
-		setQuaternion(x, y, z, w);
+		setQuaternion(0,0,0,1);
 	}
+ 
 	Quaternion(float x_, float y_, float z_, float w_)
 	{
 		x = x_;
@@ -135,18 +149,19 @@ public:
 	// scalar multiplication
 	Quaternion operator*(float s);
 	Quaternion operator * (Quaternion q);
+	Quaternion operator * (Vector3& v);
+	Quaternion operator *= (Quaternion q);
 	Quaternion operator - (Quaternion q);
 	Quaternion operator=(Quaternion& q);
-	// squared function ?
 	// scalar divide
 	Quaternion operator/(float s);
+	// squared function ?
 	
 
-	//Quaternion rotateQuaternion(Vec3 xyz, float w);
-	Vector3 rotateQuaternion(Vector3 v);
-	Quaternion rotateQuaternion_t2(Vector3 v);
+	// working July,2024
 	Quaternion rotateQuaternion(Quaternion q);
-	
+	Vector3 rotateQuaternion(Vector3 v);
+
 	Quaternion normalizeQuaternion(Quaternion xyzw);
 	Quaternion conjugateQuaternion(Quaternion xyzw);
 	Quaternion inverseQuaternion(Quaternion xyzw);

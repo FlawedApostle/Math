@@ -283,7 +283,7 @@ int main()
 	std::cout << std::endl;
 	/// conjugate
 	std::cout << "Conjugate" << std::endl;
-	Quaternion v3Conjugate(1, 2, 2, 3);
+	Quaternion v3Conjugate(0, 2, 3, 0);
 	v3Conjugate.conjugateQuaternion(v3Conjugate);
 	v3Conjugate.print("Quaternion Conjugate test =");
 	std::cout << std::endl;
@@ -317,13 +317,14 @@ int main()
 	// [1,0,0] w = 90
 	Vector3 vector3Rot(1, 0, 0);
 	//Vector3 vector3Rot(0.149, -0.149, 0.149);								// TEST
-	Quaternion quatRot(0, 0, 1, 90);
 	//Quaternion quatRot(1, 0, 0, 30);										// AN = [.9659 , (.2588 , 0 , 0)]
 	//Quaternion quatRot(0.149, -0.149, 0.149, .9659);						// AN = [.9659 , (.2588 , 0 , 0)]
 	//quatRot.rotateQuaternion(quatRot);
-	//quatRot.print("quatRot = ");
+
+	Quaternion quatRot(0, 0, 1, 90);
 	quatRot.rotateQuaternion(vector3Rot);
-	//quatRot.print("quatRot = ");
+	
+	quatRot.print("quatRot = ");
 	std::cout << std::endl;
 	/// quaterion vector3 -print test
 	/*
