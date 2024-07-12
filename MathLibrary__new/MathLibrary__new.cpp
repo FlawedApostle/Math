@@ -321,21 +321,27 @@ int main()
 	sV.operator*(2);
 	sV.print("Scalar Value * Quaternion=");
 	std::cout << std::endl;
-
-
+	/// Vector3 to quaternion
+	/*
+	std::cout << "Vector3 to Quaternion" << std::endl;
+	Vector3 vector3Rot(1, 0, 0);
+	Quaternion vtQ = vtQ.vector3ToQuaterion(vector3Rot);
+	vtQ.print("vector3 to Quaternion");
+	std::cout << std::endl;
+	*/
 	/// quaternion Rotate
 	std::cout << "Quaternion Rotate" << std::endl;
 	// [1,0,0] w = 90
-	Vector3 vector3Rot(1, 0, 0);
 	//Vector3 vector3Rot(0.149, -0.149, 0.149);								// TEST
-	//Quaternion quatRot(1, 0, 0, 30);										// AN = [.9659 , (.2588 , 0 , 0)]
 	//Quaternion quatRot(0.149, -0.149, 0.149, .9659);						// AN = [.9659 , (.2588 , 0 , 0)]
+	//Quaternion quatRot(1, 0, 0, 30);										// AN = [.9659 , (.2588 , 0 , 0)]
 	//quatRot.rotateQuaternion(quatRot);
 
+	Vector3 vector3Rot(1, 0, 0);
 	Quaternion quatRot(0, 0, 1, 90);
 	quatRot.rotateQuaternion(vector3Rot);
 	
-	quatRot.print("quatRot = ");
+	//quatRot.print("quatRot = ");
 	std::cout << std::endl;
 	/// quaterion vector3 -print test
 	/*

@@ -29,23 +29,23 @@ void Vector3::print()
 
 Vector3& Vector3::getVector3()
 {
-	//Vector3 ijk(getVector3x(), getVector3y(), getVector3z());
-	Vector3 ijk(x,y,z);
+	Vector3 ijk(getVector3x(), getVector3y(), getVector3z());
+	//Vector3 ijk(x,y,z);
 	return ijk;
 }
 
 // setters
-float Vector3::setVector3x(float set)
+float Vector3::setVector3x(const float set)
 {
 	x = set;
 	return x;
 }
-float Vector3::setVector3y(float set)
+float Vector3::setVector3y(const float set)
 {
 	y = set;
 	return y;
 }
-float Vector3::setVector3z(float set)
+float Vector3::setVector3z(const float set)
 {
 	z = set;
 	return z;

@@ -260,21 +260,26 @@ Vector3 Quaternion::rotateQuaternion(Vector3 v)
 
 	/// Test 9
 	float angle = w;
-	float i, j, k , W;
-	Quaternion quaternionUnit(x,y,z,0);;
-	Quaternion quaternionVector(v.getVector3x() , v.getVector3y() , v.getVector3z() , w);
-	quaternionUnit.print(); quaternionVector.print();
+	float i=x, j=y, k=z , W=w;
+	float I = x, J = y, K = z, W_ = w;
+	Quaternion q(i,j,k,w);
+	Quaternion qv(0, v.getVector3());
+	Quaternion qi(I, J, K, W_);
+	q.print("q"); qv.print("qv"); qi.print("qi");
 
-	Quaternion qq = quaternionUnit * quaternionVector;
-	qq.print("qq multiplication TEST");
+	q.rotateQuaternion(q);
+	q.print("q");
 
-	printf("angle=%f ", angle );
-	float angleCos = w;
-	angleCos = cos(angle / 2);
-	angleCos = angleCos * formula.RADIANtoDEGREE;
-	float angleSin = w;
-	angleSin = sin(angle/2);
-	printf("angle cos=%f , sin=%f\n", angleCos , angleSin);
+	qi.inverseQuaternion(q);
+	qi.print("qi");
+
+	Quaternion Result(q * qv * qi );
+	Quaternion ResultNorm = Result.normalizeQuaternion(Result);
+	ResultNorm.print("Result......");
+
+	// now it works !! July 2024
+	//Quaternion qq = quaternionUnit * quaternionVector;
+	//qq.print("qq multiplication TEST");
 
 	 // quaternion * unit quaternion * quaternionInverse
 
@@ -282,7 +287,7 @@ Vector3 Quaternion::rotateQuaternion(Vector3 v)
 	//resultV.operator=(quaternion);
 	//ijk.operator=(ijkMultiplied);
 	
-	resultV.print("Final Vector Rotation =");
+	//resultV.print("Final Vector Rotation =");
 	//printf("w= %f\n", angle);
 
 
@@ -322,7 +327,7 @@ Quaternion Quaternion::rotateQuaternion(Quaternion q)
 	//Quaternion newQuat(vecQuat3.x, vecQuat3.y, vecQuat3.z, w);
 	//newQuat.print("newQuat=");
 
-	Quaternion newQuat(vector3Quat.getVector3());
+	/*Quaternion newQuat(vector3Quat.getVector3());*/
 
 	// conv Deg to rad -> 2(pi)/360 || conv Rad to Deg -> (180/pi)
 	float theta = w * formula.DEGREEtoRADIAN;
@@ -346,6 +351,7 @@ Quaternion Quaternion::rotateQuaternion(Quaternion q)
 	);
 
 	//rotatedQuat.print("new rotated Quaternion = ");
+	q.x = x, q.y = y, q.z = z, q.w = w;
 	return q;
 }
 
@@ -536,7 +542,15 @@ Quaternion Quaternion::vector3ToQuaterion(Vector3& v)
 	x = v.getVector3x();
 	y = v.getVector3y();
 	z = v.getVector3z();
-	w = 0;
+	if (w = NULL)
+	{
+		w = 0;
+	}
+	else
+	{
+		w = w;
+	}
+
 	Quaternion ijkw(x,y,z,w);
 	return ijkw;
 }

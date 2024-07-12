@@ -119,7 +119,7 @@ public:
 		 v.setVector3z(z);
 		 w = 0;
 	}
-	Quaternion(float W , Vector3 v) 
+	Quaternion(float W , Vector3& v) 
 	{
 		x = v.getVector3x();
 		y = v.getVector3y();
