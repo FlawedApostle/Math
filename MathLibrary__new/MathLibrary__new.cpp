@@ -4,9 +4,11 @@
 #include "Vector.h"
 #include "sstream"
 #include "math.h"
-#include "Quat.h"
-#include "Vector3.h"
-#include "Vector4.h"
+#include "Quat.h"		// new Quaternion class
+#include "Vector3.h"	// new Vector3 class
+#include "Vector4.h"	// new Vector4 class
+#include "rayLine.h"		// new ray class
+#include "plane.h"
  
 int main()
 {
@@ -434,8 +436,24 @@ int main()
 	 std::cout << std::endl;
 	 */
 
+
+///************************************************** new rayLine class *****************************************************//
+	Vector3 r1(2, 4, 6);
+	Vector3 r2(4, 8, 10);
+ 
+	rayLine rayL(r1,r2);
+	rayL.print("rayL");
+	rayL.currentPosition(2);
+	//rayL.print("New Ray Class");
+
+	///************************************************** new plane class *****************************************************//
+	plane pt;
+	pt.print();
+	Vector4 ptV(10, 9, 8, 7);
+	pt.operator=(ptV);
+	pt.print("hellooo");
+  
+
 	
-
-
 }
 

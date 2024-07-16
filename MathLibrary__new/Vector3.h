@@ -2,6 +2,7 @@
 #include "Vector3.h"
 #include <cmath>
 #include <math.h>
+#include <string>
 class Vector3
 {
 private:
@@ -42,16 +43,16 @@ public:
 	 
 	// getters 
 	Vector3& getVector3();
-	float getVector3x();
-	float getVector3y();
-	float getVector3z();
+	float const getVector3x();
+	float const getVector3y();
+	float const getVector3z();
 	 
 
 
-	Vector3& operator = ( Vector3& v);
-	Vector3& operator + (const Vector3& v);
+	Vector3& operator = (Vector3 v);
+	Vector3& operator + (const Vector3 v);
 	Vector3& operator + (const float s);
-	Vector3& operator - (const Vector3& v);
+	Vector3& operator - (const Vector3 v);
 	Vector3& operator * (const float scalar);
 	Vector3& operator * (const Vector3& v);
 

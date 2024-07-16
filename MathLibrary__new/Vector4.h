@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include "string.h"
 #include "Vector3.h"
 //#include "atlstr.h"			// CString
@@ -41,10 +42,10 @@ public:
 	}
 	Vector4(Vector4& v)
 	{
-		x = v.setVector4x(x);
-		y = v.setVector4y(y);
-		z = v.setVector4z(z);
-		w = v.setVector4w(w);
+		x = v.getVector4x();
+		y = v.getVector4y();
+		z = v.getVector4z();
+		w = v.getVector4w();
 	}
 
 	~Vector4() {};
@@ -100,10 +101,22 @@ public:
 	{
 		w = v; return w;
 	}
-
-
+	float setVector4xyzw(Vector4 v)
+	{
+		x = v.x;
+		y = v.y;
+		z = v.z;
+		w = v.w;
+	}
+	void setVector4xyzw(float x, float y, float z, float w)
+	{
+		setVector4x(x);
+		setVector4y(y);
+		setVector4z(z);
+		setVector4w(w);
+	}
 	// operators
-	Vector4& addV4(Vector4& v, Vector4& b);
+	//Vector4& addV4(Vector4& v, Vector4& b);
 	Vector4& operator+(Vector4& v);
 	Vector4& operator=(Vector4& v);
 	Vector4& operator-(Vector4& v);

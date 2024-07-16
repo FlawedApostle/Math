@@ -271,6 +271,7 @@ Vector3 Quaternion::rotateQuaternion(Vector3 v)
 	q.print("q");
 
 	qi.inverseQuaternion(q);
+	//qi.conjugateQuaternion(q);
 	qi.print("qi");
 
 	Quaternion Result(q * qv * qi );

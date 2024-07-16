@@ -51,22 +51,27 @@ float Vector3::setVector3z(const float set)
 	return z;
 }
 // getters
-float Vector3::getVector3x()
+float const Vector3::getVector3x()
 {
 	return x;
 }
-float Vector3::getVector3y()
+float const Vector3::getVector3y()
 {
 	return y;
 }
-float Vector3::getVector3z()
+float const Vector3::getVector3z()
 {
 	return z;
 }
 
-Vector3& Vector3::operator=( Vector3& v)
+Vector3& Vector3::operator=(Vector3 v)
 {
-	Vector3 sV(x = v.x, y = v.y, z = v.z);
+
+	Vector3 sV(
+		x = v.x,
+		y = v.y,
+		z = v.z	
+	);
 	//setVector3(v.x, v.y, v.z); 
  return sV;
 }
@@ -79,7 +84,7 @@ Vector3& Vector3::operator+(const float s)
 	Vector3 ijk(x,y,z);
 	return ijk;
 }
-Vector3& Vector3::operator+(const Vector3& v)
+Vector3& Vector3::operator+(const Vector3 v)
 {
 	x = v.x + x;
 	y = v.y + y;
@@ -87,18 +92,20 @@ Vector3& Vector3::operator+(const Vector3& v)
 	return *this;
 }
 
-Vector3& Vector3::operator-(const Vector3& v)
+Vector3& Vector3::operator-(const Vector3 v)
 {
-	x = x - v.x;
-	y = y - v.y;
-	z = z - v.z;
-
+	x =  x - v.x;
+	y =  y - v.y;
+	z =  z - v.z;
 	Vector3 ijk(x, y, z);
 	return ijk;
 }
 
 Vector3& Vector3::operator*(const float scalar)
 {
+	//x = setVector3x(scalar * x);
+	//y = setVector3y(scalar * y);
+	//z = setVector3z(scalar * z);
 	setVector3x(scalar * x);
 	setVector3y(scalar * y);
 	setVector3z(scalar * z);
