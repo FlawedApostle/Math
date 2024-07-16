@@ -7,6 +7,7 @@ void plane::print()
 {
  		printf("%s\n", hello);
         vector4Plane.print("plane V4 = ");
+        printf("Plane xyzw = (%f,%f,%f,%f)\n", x, y, z, w);
  }
 void plane::print(const char* n)
 {
@@ -21,20 +22,21 @@ z(0),
 w(0)
 {
     vector4Plane.setVector4xyzw(0, 0, 0, 1);
-    //vector4Plane.setVector4x(0);
-    //vector4Plane.setVector4y(0);
-    //vector4Plane.setVector4z(0);
-    //vector4Plane.setVector4w(1);
+    x = 0;
+    y = 0;
+    z = 0;
+    w = 1;
+ 
 }
+plane::~plane()
+{
+}
+
 
 void plane::operator=(Vector4 p)
 {
-      vector4Plane.setVector4x(p.getVector4x());
-      vector4Plane.setVector4y(p.getVector4y());
-      vector4Plane.setVector4z(p.getVector4z());
-      vector4Plane.setVector4w(p.getVector4w());
-}
-
-plane::~plane()
-{
+    vector4Plane.setVector4x(p.getVector4x());
+    vector4Plane.setVector4y(p.getVector4y());
+    vector4Plane.setVector4z(p.getVector4z());
+    vector4Plane.setVector4w(p.getVector4w());
 }
