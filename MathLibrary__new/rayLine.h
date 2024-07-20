@@ -10,10 +10,47 @@ class rayLine
 		Vector3 rayVector3;
 		Vector3 dirStart;
 		Vector3 dirEnd;
+		Vector3 dirFinal;
 
 	public:
-		void print(const char* notes);
-		void print();
+		//void print(const char* notes);
+		//void print();
+		//void printStart();
+		//void printEnd();
+
+		void print(const char* notes)
+		{
+			printf("[%s] \n", notes);
+			//dirStart.print("dirStart=");
+			//dirEnd.print("dirEnd=");
+			dirFinal.print("dirFinal=");
+
+		}
+		void print()
+		{
+			dirStart.print("dirStart=");
+			dirEnd.print("dirEnd=");
+		}
+			 
+		void printStart()
+		{
+			dirStart.print("dirStart=");
+		}
+		void printStart(const char* notes)
+		{
+			printf("[%s] \n", notes);
+			dirStart.print("dirStart=");
+		}
+		void printEnd()
+		{
+			dirEnd.print("dirEnd=");
+		}
+		void printEnd(const char* notes)
+		{
+			printf("[%s] \n", notes);
+			dirEnd.print("dirEnd=");
+		}
+ 
 		rayLine();
 		rayLine(Vector3 dirStart_, Vector3  dirEnd_);
 		rayLine(float x , float y , float z , float i , float j , float k);

@@ -438,20 +438,33 @@ int main()
 
 
 ///************************************************** new rayLine class *****************************************************//
-	Vector3 r1(2, 4, 6);
-	Vector3 r2(4, 8, 10);
- 
-	rayLine rayL(r1,r2);
-	rayL.print("rayL");
-	rayL.currentPosition(2);
-	//rayL.print("New Ray Class");
-
+	/*
+	//Vector3 r1(2, 4, 6);
+	//Vector3 r2(4, 8, 10);
+	
+	//rayLine rayL(r1,r2);
+	//rayL.printStart("rayL - Start");
+	//rayL.printEnd("rayL - End");
+	//rayL.currentPosition(2);
+	//rayL.print("currentPosition");
+	*/
 	///************************************************** new plane class *****************************************************//
 	plane pt;
 	pt.print();
-	Vector4 ptV(10, 9, 8, 7);
-	pt.operator=(ptV);
-	pt.print("hellooo");
+	//Vector4 pt1(10, 9, 8, 7);
+	//Vector4 pt2(7,6,5,4);
+	//Vector4 pt3(25,8,23,2);
+	//
+	//pt.operator=(pt1);
+	//pt.print("pt says hello !");
+	//
+	//plane pV(pt1, pt2);
+	//plane pVv(pt1, pt2, pt3);
+	//pV.printP1();
+	//pV.printP2();
+	//pVv.printP3();
+	//
+	//pVv.print("pVv");
   
 
 	

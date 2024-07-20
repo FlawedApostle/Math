@@ -49,10 +49,9 @@ public:
 	}
 
 	~Vector4() {};
-	void print(std::string note)
+	void print(const char* note)
 	{
-		std::cout << note;
-		printf(" Vector4 = [%f,%f,%f,%f]\n", x, y, z, w);
+		printf("[%s] Vector4 = [%f,%f,%f,%f]\n", note , x, y, z, w);
 	}
 	void print()
 	{	
@@ -62,7 +61,7 @@ public:
 	// Getters
 	Vector4& getVector4()
 	{
-		Vector4 vijk(x, y, z, w);
+		Vector4 vijk(getVector4x(), getVector4y(), getVector4z(), getVector4w());
 		return  vijk;
 	}
 
@@ -101,7 +100,7 @@ public:
 	{
 		w = v; return w;
 	}
-	float setVector4xyzw(Vector4 v)
+	void setVector4xyzw(Vector4 v)			// float
 	{
 		x = v.x;
 		y = v.y;

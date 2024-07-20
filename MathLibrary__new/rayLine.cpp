@@ -1,10 +1,11 @@
+#include <iostream>
 #include "rayLine.h"
 #include <string>
 
-
 rayLine::rayLine() :
 	dirStart(0,0,0),
-	dirEnd(0,0,0)
+	dirEnd(0,0,0),
+	dirFinal(0,0,0)
 {
 	//printf("hello new ray class\n");
 }
@@ -66,9 +67,6 @@ Vector3& rayLine::setdirEnd(Vector3 dirEnd_)
 
 Vector3& rayLine::currentPosition(float t)
 {
-	dirStart.print("function test");
-	dirEnd.print("function test");
-
 	/// P = P + tV
 	/// v = dirEnd - dirStart
 	/// t = scalar
@@ -76,29 +74,18 @@ Vector3& rayLine::currentPosition(float t)
 	dirEnd.operator-(dirStart);
 	Vector3 V;
 	V.operator=(dirEnd);
-	V.print("midP");
 
 	V = V * t;
+	//Vector3 linePos
+	//(
+	//	dirStart + V.getVector3()
+	//);
+	dirFinal = (dirStart + V.getVector3());
 
-	Vector3 linePos
-	(
-		dirStart + V.getVector3()
-	);
-
-	linePos.print();
-	return linePos;
+	//linePos.print();
+	return dirFinal;
 }
 
-void rayLine::print(const char* notes)
-{
-	printf("[note:] [%s]\n", notes);
-	dirStart.print("dirStart=");
-	dirEnd.print("dirEnd=");
-}
-void rayLine::print()
-{
-	dirStart.print("dirStart=");
-	dirEnd.print("dirEnd=");
-}
+
 
 
