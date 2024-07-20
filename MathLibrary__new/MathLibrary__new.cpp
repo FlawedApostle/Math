@@ -434,9 +434,10 @@ int main()
 	 cv1.crossProduct(cv1, cv2);
 	 cv1.print("Vector3 test - cross");
 	 std::cout << std::endl;
+	 Vector3 vtt(2, 9, 4);
+	 Vector3 vt(vtt);
+	 vt.print();
 	 */
-
-
 ///************************************************** new rayLine class *****************************************************//
 	/*
 	//Vector3 r1(2, 4, 6);
@@ -449,8 +450,11 @@ int main()
 	//rayL.print("currentPosition");
 	*/
 	///************************************************** new plane class *****************************************************//
-	plane pt;
-	pt.print();
+	Vector3 pt3(7, 12, 8);
+	Vector3 pt2(19, 24, 38);
+	Vector3 pt1(2003, 40, 60);
+	plane pt(pt1, pt2 , pt3);
+	pt.print("pt3");
 	//Vector4 pt1(10, 9, 8, 7);
 	//Vector4 pt2(7,6,5,4);
 	//Vector4 pt3(25,8,23,2);

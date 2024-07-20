@@ -14,8 +14,6 @@ w(0)
         vector4Plane.setVector4xyzw(0, 0, 0, 1);
         printf("Default Plane Set\n");
     }
-    
- 
 }
 plane::~plane()
 {

@@ -20,7 +20,7 @@ public:
 
 	Vector4() 
 	{
-		setVector4(1,1,1,1);
+		setVector4(0,0,0,1);
 	}
 	Vector4(float x_, float y_, float z_, float w_) 
 	{

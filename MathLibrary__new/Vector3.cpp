@@ -50,6 +50,12 @@ float Vector3::setVector3z(const float set)
 	z = set;
 	return z;
 }
+void Vector3::setVector3xyz(Vector3 v)
+{
+	x = v.getVector3x();
+	y = v.getVector3y();
+	z = v.getVector3z();
+}
 // getters
 float const Vector3::getVector3x()
 {
@@ -62,6 +68,12 @@ float const Vector3::getVector3y()
 float const Vector3::getVector3z()
 {
 	return z;
+}
+
+Vector3 const Vector3::getVectorxyz()
+{
+	Vector3 result(x, y, z);
+	return result;
 }
 
 Vector3& Vector3::operator=(Vector3 v)

@@ -15,11 +15,12 @@ protected:
 		z = z_;
 	}
 
+
 public:
 	// default
 	Vector3()
 	{
-		setVector3(1,1,1);
+		setVector3(0,0,0);
 	}
 
 	Vector3(float x, float y, float z)
@@ -40,12 +41,15 @@ public:
 	float setVector3x(float set);
 	float setVector3y(float set);
 	float setVector3z(float set);
+	void setVector3xyz(Vector3 v);
+	
 	 
 	// getters 
 	Vector3& getVector3();
 	float const getVector3x();
 	float const getVector3y();
 	float const getVector3z();
+	Vector3 const getVectorxyz();
 	 
 
 
